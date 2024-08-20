@@ -45,7 +45,7 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"inset into niveis (id, nome, sigla) values (0, {Nome}, {Sigla})";
+            cmd.CommandText = $"inset into niveis (id, nome, sigla) values ('{Nome}', '{Sigla}')";
             cmd.ExecuteNonQuery();
         }
 
