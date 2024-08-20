@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace SysPecNSLib
 {
@@ -45,6 +46,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"inset into niveis (id, nome, sigla) values (0, {Nome}, {Sigla})";
+            cmd.ExecuteNonQuery();
         }
 
         public static Nivel ObterPorId(int id)
