@@ -43,7 +43,7 @@ namespace SysPecNSLib
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-
+            cmd.CommandType = System.Data.CommandType.Text;
         }
 
         public static Nivel ObterPorId(int id)
