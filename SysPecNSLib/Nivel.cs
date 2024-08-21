@@ -49,7 +49,7 @@ namespace SysPecNSLib
             // conectando com o banco de dados
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"insert niveis (nome, sigla) values ('{Nome}','{Sigla}')";
+            cmd.CommandText = $"insert niveis (nome, sigla) values ({Nome}, {Sigla})";
             cmd.ExecuteNonQuery();
         
         }
