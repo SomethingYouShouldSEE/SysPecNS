@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace SysPecNSLib
 {
-    public class Usuario
+    public class Estoque
     {
-
     }
 }
