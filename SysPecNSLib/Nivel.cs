@@ -101,9 +101,17 @@ namespace SysPecNSLib
             //else
             //    return false;
         }
-        public void Excluir(int id) 
-        { 
-            
+        public void Excluir() 
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"delete from niveis where id = {Id}";
+            cmd.ExecuteNonQuery();
+
+            //Nivel n = new Nivel();
+            //n.Id = 12345; //Não estatico | precisa dar ID para excluir e não em (public void Excluir(id))
+            //n.Excluir();
+
         }
 
     }
