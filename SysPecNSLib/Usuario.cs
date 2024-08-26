@@ -53,10 +53,10 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome); //Paremotros da procedure do banco de dados
+            cmd.Parameters.AddWithValue("spnome", Nome); //Paremetros da procedure do banco de dados
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spsenha", Senha);
-            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id); // Id da classe Nivel
             var dr = cmd.ExecuteReader();
             while (dr.Read()) // bool, 
             {
@@ -76,7 +76,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from usuarios where id = {id}";
-            var dr = cmd.ExecuteReader();
+            var dr = cmd.ExecuteReader(); 
             if(dr.Read())
             {
                 usuario = new(
@@ -84,7 +84,7 @@ namespace SysPecNSLib
                     dr.GetString(1),
                     dr.GetString(2),
                     dr.GetString(3),
-                    Nivel.ObterPorId(dr.GetInt32(4)),                //Pega obter por id da classe Nivel
+                    Nivel.ObterPorId(dr.GetInt32(4)),     //Pega obter por id da classe Nivel
                     dr.GetBoolean(5));
 
             }
@@ -137,14 +137,35 @@ namespace SysPecNSLib
         public void Altualizar()
         {
             //usuario: nome, senha, nível
-        }
-        public void Arquivar()
-        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_altera";
+            //cmd.Parameters.Add("spid", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Id; | Mesma que debaixo mais coloca valor no Id
+            cmd.Parameters.AddWithValue("spid", Id); // Adiciona parametro para Id para usar where no Banco para alterar aonde spid for Id
 
-        }
-        public void Restaurar()
-        {
+            // Direction Usado para dizer se é output ou input (entrada, saida)
 
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.ExecuteNonQuery(); // Dita o que foi alterado 
+
+            cmd.Connection.Close(); // Fecha a conneção aberta em cmd.Banco.Abrir 
+        }
+        public static void Arquivar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 0 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+        public void Restaurar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 1 where = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
     }
 }
