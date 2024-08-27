@@ -25,6 +25,54 @@ namespace SysPecNSDesk
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
+            CarregaGrid();
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            // MessageBox.Show(cmbNivel.SelectedValue.ToString()); Mostra Nivel na tela
+            Usuario usuario = new(
+                txtNome.Text,
+                txtEmail.Text,
+                txtSenha.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
+                );
+            usuario.Inserir();
+            if (usuario.Id > 0)
+            {
+                txtId.Text = usuario.Nome;
+                MessageBox.Show($"O usuario {usuario.Nome}, foi gravado com sucesso com o ID {usuario.Id}");
+                txtNome.Clear();
+                txtEmail.Clear(); // Limpa as partes da tabela de inserir
+                txtConfSenha.Clear();
+                txtSenha.Clear();
+                txtNome.Focus();
+
+                FrmUsuario_Load(sender, e); // Recarega o usuario assim que for inserido
+            }
+            else
+            {
+                MessageBox.Show("Falha ao cadastrar");
+            }
+
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e) // Quando mudar faça
+        {
+            if (txtBusca.Text.Length>0) // Se em txtBusca for maior de 0 taca o carregaGrid em txtBusca
+            {
+                CarregaGrid(txtBusca.Text);
+            }
+            else
+            {
+                CarregaGrid(); // txtBusca Pode voltar vazio 
+            }
+        }
+
+        private void CarregaGrid(string nome = "")
+        {
+            // preenchendo datagrid com os usuarios
+
             var lista = Usuario.ObterLista();
             dgvUsuarios.Rows.Clear();
             int cont = 0;
@@ -36,7 +84,7 @@ namespace SysPecNSDesk
                 cmbNivel.DisplayMember = "Nome";
                 cmbNivel.ValueMember = "Id";
 
-                // preenchendo datagrid com os usuarios
+
 
                 dgvUsuarios.Rows.Add(); // Adiciona linha
                 dgvUsuarios.Rows[cont].Cells[0].Value = usuario.Id; // Cells = Coluna
@@ -48,13 +96,6 @@ namespace SysPecNSDesk
 
                 cont++; //
             }
-        }
-
-        private void btnInserir_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(cmbNivel.SelectedValue.ToString());
-            Usuario usuario = new();
-
         }
     }
 }

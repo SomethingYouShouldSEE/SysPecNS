@@ -18,11 +18,11 @@ namespace SysPecNSLib
         public bool Ativo { get; set; }
 
         public Usuario()
-        {
+        { // Caso não busque nada
             Nivel = new(); // Mesmo que Nulo ainda se cria valor vazio
         }
         public Usuario(int id, string? nome, string? email, string senha, Nivel nivel, bool ativo) //sobrecarga de metodos
-        {
+        { // Caso busque com ID
             Id = id;
             Nome = nome;
             Email = email;
@@ -32,7 +32,7 @@ namespace SysPecNSLib
         }
 
         public Usuario(string? nome, string? email, string senha, Nivel nivel)
-        {
+        { //Caso busque sem ID
             Nome = nome;
             Email = email;
             Senha = senha;
@@ -91,11 +91,20 @@ namespace SysPecNSLib
 
             return usuario;
         }
-        public static List<Usuario> ObterLista() //Entrega Lista
+        public static List<Usuario> ObterLista(string? nome = "") //Entrega Lista | ([string? nome = ""]) - Opcional se não haver valor ira usar sem
         {
             List<Usuario> lista = new();
             var comandosSQL = Banco.Abrir();
             comandosSQL.CommandType = CommandType.Text;
+            if (nome =="")
+            {
+                comandosSQL.CommandText = "select * from usarios order by nome";
+            }
+            else
+            {
+                comandosSQL.CommandText = $"select * from usuarios where like '%{nome}%'";
+            }
+
             comandosSQL.CommandText = "select * from usuarios order by nome limit 10"; //Limita até dez no banco e conforme for necessario adiciona mais dez conforme o 'while'
             var dr = comandosSQL.ExecuteReader(); //Armazena o acima e executa
             while (dr.Read())
@@ -134,17 +143,17 @@ namespace SysPecNSLib
 
             return usuario;
         }
-        public void Altualizar()
+        public void Atualizar()
         {
             //usuario: nome, senha, nível
             var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_usuario_altera";
+            cmd.CommandType = CommandType.StoredProcedure; // Pega uma procedure dentro do banco de dados
+            cmd.CommandText = "sp_usuario_altera"; // Nome da procedure
             //cmd.Parameters.Add("spid", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Id; | Mesma que debaixo mais coloca valor no Id
             cmd.Parameters.AddWithValue("spid", Id); // Adiciona parametro para Id para usar where no Banco para alterar aonde spid for Id
 
             // Direction Usado para dizer se é output ou input (entrada, saida)
-
+            cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
             cmd.Parameters.AddWithValue("spsenha", Senha);
             cmd.ExecuteNonQuery(); // Dita o que foi alterado 
