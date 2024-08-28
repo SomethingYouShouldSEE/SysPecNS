@@ -59,7 +59,7 @@ namespace SysPecNSDesk
 
         private void txtBusca_TextChanged(object sender, EventArgs e) // Quando mudar faça
         {
-            if (txtBusca.Text.Length>0) // Se em txtBusca for maior de 0 taca o carregaGrid em txtBusca
+            if (txtBusca.Text.Length > 0) // Se em txtBusca for maior de 0 taca o carregaGrid em txtBusca
             {
                 CarregaGrid(txtBusca.Text);
             }
@@ -96,6 +96,11 @@ namespace SysPecNSDesk
 
                 cont++; //
             }
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

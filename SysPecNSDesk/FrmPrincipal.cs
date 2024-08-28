@@ -35,5 +35,12 @@ namespace SysPecNSDesk
 
             //frmUsuario.ShowDialog(); --
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //FrmCliente frmCliente = new();
+            //frmCliente.MdiParent = this
+            //frmCliente.Show();
+        }
     }
 }

@@ -183,6 +183,7 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(224, 23);
             txtNome.TabIndex = 8;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // txtEmail
             // 

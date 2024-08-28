@@ -98,7 +98,7 @@ namespace SysPecNSLib
             comandosSQL.CommandType = CommandType.Text;
             if (nome =="")
             {
-                comandosSQL.CommandText = "select * from usarios order by nome";
+                comandosSQL.CommandText = "select * from usuarios order by nome";
             }
             else
             {
