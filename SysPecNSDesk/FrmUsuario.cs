@@ -108,11 +108,11 @@ namespace SysPecNSDesk
         {
             if (VerificarControler())
             {
-                var msg = MessageBox.Show("Deseja continuar a edição", "Confirmação de Saída", 
-                    MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Warning, 
+                var msg = MessageBox.Show("Deseja continuar a edição", "Confirmação de Saída",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2);
-                              
+
                 if (msg == DialogResult.No) this.Close(); // Botão 'MessageBoxButtons.YesNo'                                                           // Messsage Box Usando MessageBox, Buttons, Warnings
             }
             else
@@ -126,7 +126,7 @@ namespace SysPecNSDesk
 
         private bool VerificarControler()
         {
-            if(txtNome.Text != string.Empty
+            if (txtNome.Text != string.Empty
                 || txtEmail.Text != string.Empty
                 || txtSenha.Text != string.Empty
                 || txtConfSenha.Text != string.Empty)
@@ -139,7 +139,14 @@ namespace SysPecNSDesk
             }
         }
 
+        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

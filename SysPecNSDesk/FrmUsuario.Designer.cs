@@ -195,6 +195,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(179, 23);
             txtEmail.TabIndex = 9;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // cmbNivel
             // 
@@ -203,6 +204,7 @@
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(121, 23);
             cmbNivel.TabIndex = 10;
+            cmbNivel.SelectedIndexChanged += cmbNivel_SelectedIndexChanged;
             // 
             // txtSenha
             // 
@@ -253,7 +255,7 @@
             // btnDeletar
             // 
             btnDeletar.Image = Properties.Resources._19;
-            btnDeletar.Location = new Point(413, 177);
+            btnDeletar.Location = new Point(437, 177);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(80, 58);
             btnDeletar.TabIndex = 16;
@@ -271,8 +273,8 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Image = Properties.Resources._19;
-            btnCancelar.Location = new Point(533, 177);
+            btnCancelar.Image = Properties.Resources._41;
+            btnCancelar.Location = new Point(566, 177);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(80, 58);
             btnCancelar.TabIndex = 16;

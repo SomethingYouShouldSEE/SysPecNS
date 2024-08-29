@@ -84,7 +84,7 @@ namespace SysPecNSLib
                     dr.GetString(1),
                     dr.GetString(2),
                     dr.GetString(3),
-                    Nivel.ObterPorId(dr.GetInt32(4)),     //Pega obter por id da classe Nivel
+                    Nivel.ObterPorId(dr.GetInt32(4)), //Pega obter por id da classe Nivel
                     dr.GetBoolean(5));
 
             }
