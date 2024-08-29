@@ -75,7 +75,7 @@
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 0;
-            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
             // clnid
             // 

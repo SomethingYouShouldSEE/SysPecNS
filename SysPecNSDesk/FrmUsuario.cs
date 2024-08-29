@@ -19,11 +19,6 @@ namespace SysPecNSDesk
             InitializeComponent();
         }
 
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
             CarregaGrid();
@@ -147,6 +142,13 @@ namespace SysPecNSDesk
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = 0;
+            int posicaoLinha = dgvUsuarios.CurrentRow.Index; // Ao clicar na grid pega o valor clicado e armazena aq
+            id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value);
         }
     }
 }
