@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,5 +103,43 @@ namespace SysPecNSDesk
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (VerificarControler())
+            {
+                var msg = MessageBox.Show("Deseja continuar a edição", "Confirmação de Saída", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning, 
+                    MessageBoxDefaultButton.Button2);
+                              
+                if (msg == DialogResult.No) this.Close(); // Botão 'MessageBoxButtons.YesNo'                                                           // Messsage Box Usando MessageBox, Buttons, Warnings
+            }
+            else
+            {
+                Close();
+            }
+
+
+            //this.Close();
+        }
+
+        private bool VerificarControler()
+        {
+            if(txtNome.Text != string.Empty
+                || txtEmail.Text != string.Empty
+                || txtSenha.Text != string.Empty
+                || txtConfSenha.Text != string.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }

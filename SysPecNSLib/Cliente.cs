@@ -19,7 +19,7 @@ namespace SysPecNSLib
         public bool? Ativo { get; set; }
         public Cliente() 
         {
-
+            Id = 0;
         }
 
         public Cliente(int id, string? nome, string? cpf, string telefone, string? email,DateTime timestamp, DateTime datanasc, bool ativo)

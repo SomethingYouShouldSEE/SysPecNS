@@ -52,6 +52,7 @@
             btnEditar = new Button();
             btnDeletar = new Button();
             txtBusca = new TextBox();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             dgvUsuarios.AllowUserToAddRows = false;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnid, clnNome, clnEmail, clnNivel, clnAtivo });
-            dgvUsuarios.Location = new Point(146, 220);
+            dgvUsuarios.Location = new Point(146, 270);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
@@ -117,11 +118,14 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(146, 159);
+            btnInserir.Cursor = Cursors.Hand;
+            btnInserir.Image = Properties.Resources._01;
+            btnInserir.Location = new Point(146, 177);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
+            btnInserir.Size = new Size(80, 58);
             btnInserir.TabIndex = 1;
             btnInserir.Text = "&Inserir";
+            btnInserir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
             // 
@@ -237,29 +241,45 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(331, 159);
+            btnEditar.Image = Properties.Resources._51;
+            btnEditar.Location = new Point(285, 177);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(80, 58);
             btnEditar.TabIndex = 15;
             btnEditar.Text = "&Editar";
+            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             // 
             // btnDeletar
             // 
-            btnDeletar.Location = new Point(511, 159);
+            btnDeletar.Image = Properties.Resources._19;
+            btnDeletar.Location = new Point(413, 177);
             btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(75, 23);
+            btnDeletar.Size = new Size(80, 58);
             btnDeletar.TabIndex = 16;
             btnDeletar.Text = "De&letar";
+            btnDeletar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnDeletar.UseVisualStyleBackColor = true;
             // 
             // txtBusca
             // 
-            txtBusca.Location = new Point(146, 191);
+            txtBusca.Location = new Point(146, 241);
             txtBusca.Name = "txtBusca";
             txtBusca.Size = new Size(500, 23);
             txtBusca.TabIndex = 17;
             txtBusca.TextChanged += txtBusca_TextChanged;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Image = Properties.Resources._19;
+            btnCancelar.Location = new Point(533, 177);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(80, 58);
+            btnCancelar.TabIndex = 16;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += button1_Click;
             // 
             // FrmUsuario
             // 
@@ -267,6 +287,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(txtBusca);
+            Controls.Add(btnCancelar);
             Controls.Add(btnDeletar);
             Controls.Add(btnEditar);
             Controls.Add(label6);
@@ -318,5 +339,6 @@
         private Button btnEditar;
         private Button btnDeletar;
         private TextBox txtBusca;
+        private Button btnCancelar;
     }
 }
