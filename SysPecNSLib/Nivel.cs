@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace SysPecNSLib
 {
@@ -49,30 +50,68 @@ namespace SysPecNSLib
             // conectando com o banco de dados
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"insert niveis (nome, sigla) values ({Nome}, {Sigla})";
+            cmd.CommandText = $"insert niveis (nome, sigla) values ('{Nome}', '{Sigla}')";
             cmd.ExecuteNonQuery();
         
         }
         public static Nivel ObterPorId(int id)
         {
-            Nivel nivel = new Nivel();
+            Nivel nivel = new();
             // consulta no banco e retornar o Nivel
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"SELECT * FROM niveis where id = {id};";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                //
+                //nivel = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                nivel.Id = dr.GetInt32(0);
+                nivel.Nome = dr.GetString(1);
+                nivel.Sigla = dr.GetString(2);
+            }
+
+
             return nivel;        
         }
         public static List<Nivel> ObterLista()
         {
             List<Nivel> lista = new List<Nivel>();
             // consulta para retornar a lista de níveis
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from niveis";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                lista.Add(new (dr.GetInt32(0),dr.GetString(1),dr.GetString(2)));
+            }
 
             return lista;
         }
         public bool Atualizar() 
         {
-            return true;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update niveis " + $"set nome = '{Nome}', sigla = '{Sigla}' where id = {Id}";
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
+
+            //if (cmd.ExecuteNonQuery()>0)
+            //    return true;
+            //else
+            //    return false;
         }
-        public void Excluir(int id) 
-        { 
-            
+        public void Excluir() 
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"delete from niveis where id = {Id}";
+            cmd.ExecuteNonQuery();
+
+            //Nivel n = new Nivel();
+            //n.Id = 12345; //Não estatico | precisa dar ID para excluir e não em (public void Excluir(id))
+            //n.Excluir();
+
         }
 
     }
