@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SysPecNSLib
 {
-    public class Endereco
+    internal class Endereco
     {
     }
 }
