@@ -30,11 +30,6 @@
         {
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             dgvUsuarios = new DataGridView();
-            clnid = new DataGridViewTextBoxColumn();
-            clnNome = new DataGridViewTextBoxColumn();
-            clnEmail = new DataGridViewTextBoxColumn();
-            clnNivel = new DataGridViewTextBoxColumn();
-            clnAtivo = new DataGridViewCheckBoxColumn();
             btnInserir = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -53,6 +48,11 @@
             btnDeletar = new Button();
             txtBusca = new TextBox();
             btnCancelar = new Button();
+            clnid = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
+            clnNivel = new DataGridViewTextBoxColumn();
+            clnAtivo = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -76,45 +76,7 @@
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 0;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
-            // 
-            // clnid
-            // 
-            clnid.Frozen = true;
-            clnid.HeaderText = "ID";
-            clnid.Name = "clnid";
-            clnid.ReadOnly = true;
-            clnid.Width = 50;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 150;
-            // 
-            // clnEmail
-            // 
-            clnEmail.Frozen = true;
-            clnEmail.HeaderText = "Email";
-            clnEmail.Name = "clnEmail";
-            clnEmail.ReadOnly = true;
-            clnEmail.Width = 150;
-            // 
-            // clnNivel
-            // 
-            clnNivel.Frozen = true;
-            clnNivel.HeaderText = "Nível";
-            clnNivel.Name = "clnNivel";
-            clnNivel.ReadOnly = true;
-            // 
-            // clnAtivo
-            // 
-            clnAtivo.Frozen = true;
-            clnAtivo.HeaderText = "Ativo";
-            clnAtivo.Name = "clnAtivo";
-            clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 50;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // btnInserir
             // 
@@ -284,6 +246,46 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += button1_Click;
             // 
+            // clnid
+            // 
+            clnid.DividerWidth = 1;
+            clnid.Frozen = true;
+            clnid.HeaderText = "ID";
+            clnid.Name = "clnid";
+            clnid.ReadOnly = true;
+            clnid.Width = 50;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 150;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Email";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 150;
+            // 
+            // clnNivel
+            // 
+            clnNivel.Frozen = true;
+            clnNivel.HeaderText = "Nível";
+            clnNivel.Name = "clnNivel";
+            clnNivel.ReadOnly = true;
+            // 
+            // clnAtivo
+            // 
+            clnAtivo.Frozen = true;
+            clnAtivo.HeaderText = "Ativo";
+            clnAtivo.Name = "clnAtivo";
+            clnAtivo.ReadOnly = true;
+            clnAtivo.Width = 50;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -320,11 +322,6 @@
 
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
         private DataGridView dgvUsuarios;
-        private DataGridViewTextBoxColumn clnid;
-        private DataGridViewTextBoxColumn clnNome;
-        private DataGridViewTextBoxColumn clnEmail;
-        private DataGridViewTextBoxColumn clnNivel;
-        private DataGridViewCheckBoxColumn clnAtivo;
         private Button btnInserir;
         private Label label1;
         private Label label2;
@@ -343,5 +340,10 @@
         private Button btnDeletar;
         private TextBox txtBusca;
         private Button btnCancelar;
+        private DataGridViewTextBoxColumn clnid;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnEmail;
+        private DataGridViewTextBoxColumn clnNivel;
+        private DataGridViewCheckBoxColumn clnAtivo;
     }
 }

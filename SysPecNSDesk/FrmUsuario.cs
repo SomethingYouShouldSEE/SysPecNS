@@ -150,5 +150,10 @@ namespace SysPecNSDesk
             int posicaoLinha = dgvUsuarios.CurrentRow.Index; // Ao clicar na grid pega o valor clicado e armazena aq
             id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value);
         }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

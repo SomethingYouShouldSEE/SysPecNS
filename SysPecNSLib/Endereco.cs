@@ -51,8 +51,36 @@ namespace SysPecNSLib
             Tipo_Endereco = tipo_endereco;
         }
 
+        public Endereco(int cli_id, char cep, string? logradouro, string numero, string? complemento, string bairro, string cidade, char uf)
+        {
+            CEP = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
+        }
+
+        public void Inserir()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_insert";
+            cmd.Parameters.AddWithValue("spcliente_id", Cli_Id);
+            cmd.Parameters.AddWithValue("spcep", CEP);
+            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+            cmd.Parameters.AddWithValue("spnumero", Numero);
+            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+            cmd.Parameters.AddWithValue("spbairro", Bairro);
+            cmd.Parameters.AddWithValue("spcidade", Cidade);
+            cmd.Parameters.AddWithValue("spuf", UF);
+            cmd.Parameters.AddWithValue
 
 
+
+
+        }
 
     }
 }
