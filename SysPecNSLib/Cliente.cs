@@ -12,17 +12,18 @@ namespace SysPecNSLib
         public int Id { get; set; }
         public string? Nome { get; set; }
         public string? CPF { get; set; }
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
         public string? Email { get; set; }
         public DateTime TimeStamp { get; set; }
         public DateTime? DataNasc { get; set; }
         public bool? Ativo { get; set; }
+        public int Endereco { get; set; }
         public Cliente() 
         {
             Id = 0;
         }
 
-        public Cliente(int id, string? nome, string? cpf, string telefone, string? email,DateTime timestamp, DateTime datanasc, bool ativo)
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email,DateTime timestamp, DateTime datanasc, bool ativo, int endereco)
         {
             Id = id;
             Nome = nome;
@@ -33,9 +34,10 @@ namespace SysPecNSLib
             TimeStamp = timestamp;
             DataNasc = datanasc;
             Ativo = ativo;
+            Endereco = endereco;
         }
 
-        public Cliente(string? nome, string? cpf, string telefone, string? email, DateTime timestamp, DateTime datanasc, bool ativo)
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime timestamp, DateTime datanasc, bool ativo, int endereco)
         {
             Nome = nome;
             Email = email;
@@ -81,7 +83,8 @@ namespace SysPecNSLib
                     dr.GetString(4),
                     dr.GetDateTime(5),
                     dr.GetDateTime(6),
-                    dr.GetBoolean(7)
+                    dr.GetBoolean(7),
+                    dr.GetInt32(8)
                     );
             }
 
@@ -115,8 +118,9 @@ namespace SysPecNSLib
                         dr.GetString(4),
                         dr.GetDateTime(5),
                         dr.GetDateTime(6),
-                        dr.GetBoolean(7)
-                        )                       
+                        dr.GetBoolean(7),
+                        dr.GetInt32(8)
+                        )
                     );
             }
 

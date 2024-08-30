@@ -39,7 +39,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(teb);
-            groupBox1.Location = new Point(112, 80);
+            groupBox1.Location = new Point(122, 118);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(381, 162);
             groupBox1.TabIndex = 0;
@@ -50,10 +50,10 @@
             // 
             teb.Controls.Add(tabPageCliente);
             teb.Controls.Add(tabPageEnderecos);
-            teb.Location = new Point(70, 55);
+            teb.Location = new Point(6, 22);
             teb.Name = "teb";
             teb.SelectedIndex = 0;
-            teb.Size = new Size(200, 100);
+            teb.Size = new Size(369, 134);
             teb.TabIndex = 0;
             // 
             // tabPageCliente
@@ -61,7 +61,7 @@
             tabPageCliente.Location = new Point(4, 24);
             tabPageCliente.Name = "tabPageCliente";
             tabPageCliente.Padding = new Padding(3);
-            tabPageCliente.Size = new Size(192, 72);
+            tabPageCliente.Size = new Size(361, 106);
             tabPageCliente.TabIndex = 0;
             tabPageCliente.Text = "Dados Clientes";
             tabPageCliente.UseVisualStyleBackColor = true;

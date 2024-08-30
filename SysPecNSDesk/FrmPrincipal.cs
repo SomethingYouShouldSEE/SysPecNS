@@ -50,20 +50,25 @@ namespace SysPecNSDesk
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           //if(VerificarControles())
-           //{
-           //
-           //}
+            //if(VerificarControles())
+            //{
+            //
+            //}
 
-            var msg = MessageBox.Show("Deseja", "Confirmação de Saída", MessageBoxButtons.YesNo
-                , MessageBoxIcon.Warning, 
+            var msg = MessageBox.Show("Deseja", "Confirmação de Saída",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
                 MessageBoxDefaultButton.Button2);
-            if(msg == DialogResult.Yes) Application.Exit(); // Botão 'MessageBoxButtons.YesNo'
+            if (msg == DialogResult.Yes) Application.Exit(); // Botão 'MessageBoxButtons.YesNo'
             // Messsage Box Usando MessageBox, Buttons, Warnings
 
         }
 
-
-
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente frmcliente = new();
+            frmcliente.MdiParent = this;
+            frmcliente.Show();
+        }
     }
 }
