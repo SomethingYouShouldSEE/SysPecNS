@@ -75,8 +75,12 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spbairro", Bairro);
             cmd.Parameters.AddWithValue("spcidade", Cidade);
             cmd.Parameters.AddWithValue("spuf", UF);
-            cmd.Parameters.AddWithValue
-
+            cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_Endereco);
+            var dr = cmd.ExecuteReader();
+            while (dr.Read()) // bool, 
+            {
+                Cli_Id = dr.GetInt32(0);
+            }
 
 
 

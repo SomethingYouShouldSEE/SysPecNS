@@ -77,8 +77,8 @@ namespace SysPecNSDesk
                 // carregando o combobox de niveis
                 var niveis = Nivel.ObterLista();
                 cmbNivel.DataSource = niveis; // Pega dados do niveis source aqui
-                cmbNivel.DisplayMember = "Nome";
-                cmbNivel.ValueMember = "Id";
+                cmbNivel.DisplayMember = "Nome"; 
+                cmbNivel.ValueMember = "Id"; // Valha o valor do ID e mostra o nome do Usuario
 
 
 
