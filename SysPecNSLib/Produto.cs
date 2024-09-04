@@ -19,7 +19,7 @@ namespace SysPecNSLib
         public double EstoqueMinimo { get; set; }
         public double ClasseDesconto { get; set; }
         public byte[]? Imagem { get; set; }
-        public DateTime DataCad { get; set; }
+        public DateTime? DataCad { get; set; }
         public Produto()
         {
 
@@ -46,7 +46,7 @@ namespace SysPecNSLib
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
         }
-        public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime dataCad)
+        public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? dataCad)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -58,7 +58,7 @@ namespace SysPecNSLib
             Imagem = imagem;
             DataCad = dataCad;
         }
-        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime dataCad)
+        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime? dataCad = null)
         {
             Id = id;
             CodBar = codBar;
@@ -70,7 +70,9 @@ namespace SysPecNSLib
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
             DataCad = dataCad;
+
         }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -118,7 +120,7 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
                     );
             }
@@ -141,7 +143,7 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null, // Removir a string de imagem para nulo
                     dr.GetDateTime(9)
                     ));
             }

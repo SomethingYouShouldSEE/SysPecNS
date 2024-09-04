@@ -31,12 +31,11 @@
             txtId = new TextBox();
             lbId = new Label();
             txtCodigoBarras = new TextBox();
-            txtValorUnitario = new TextBox();
+            txtValorUnit = new TextBox();
             txtUnidadeVenda = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            dmEstoqueMinimo = new DomainUpDown();
             label4 = new Label();
             txtDescricao = new TextBox();
             cmbCategoria = new ComboBox();
@@ -44,7 +43,7 @@
             label5 = new Label();
             btnAdicionar = new Button();
             btnEditar = new Button();
-            btnConcertar = new Button();
+            btnConsultar = new Button();
             dgProdutos = new DataGridView();
             clnCategoria = new DataGridViewTextBoxColumn();
             clnCodigoBarras = new DataGridViewTextBoxColumn();
@@ -58,13 +57,16 @@
             label6 = new Label();
             lbCategoria = new Label();
             label7 = new Label();
+            dmEstoqueMinimo = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgProdutos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dmEstoqueMinimo).BeginInit();
             SuspendLayout();
             // 
             // txtId
             // 
             txtId.Location = new Point(147, 95);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(64, 23);
             txtId.TabIndex = 0;
             txtId.TextChanged += txtId_TextChanged;
@@ -77,7 +79,6 @@
             lbId.Size = new Size(18, 15);
             lbId.TabIndex = 1;
             lbId.Text = "ID";
-            lbId.Click += label1_Click;
             // 
             // txtCodigoBarras
             // 
@@ -87,13 +88,13 @@
             txtCodigoBarras.TabIndex = 2;
             txtCodigoBarras.TextChanged += txtCodigoBarras_TextChanged;
             // 
-            // txtValorUnitario
+            // txtValorUnit
             // 
-            txtValorUnitario.Location = new Point(294, 148);
-            txtValorUnitario.Name = "txtValorUnitario";
-            txtValorUnitario.Size = new Size(100, 23);
-            txtValorUnitario.TabIndex = 3;
-            txtValorUnitario.TextChanged += txtValorUnitario_TextChanged;
+            txtValorUnit.Location = new Point(294, 148);
+            txtValorUnit.Name = "txtValorUnit";
+            txtValorUnit.Size = new Size(100, 23);
+            txtValorUnit.TabIndex = 3;
+            txtValorUnit.TextChanged += txtValorUnitario_TextChanged;
             // 
             // txtUnidadeVenda
             // 
@@ -130,19 +131,10 @@
             label3.TabIndex = 7;
             label3.Text = "Unidade Venda";
             // 
-            // dmEstoqueMinimo
-            // 
-            dmEstoqueMinimo.Location = new Point(581, 149);
-            dmEstoqueMinimo.Name = "dmEstoqueMinimo";
-            dmEstoqueMinimo.Size = new Size(38, 23);
-            dmEstoqueMinimo.TabIndex = 8;
-            dmEstoqueMinimo.Text = "0";
-            dmEstoqueMinimo.SelectedItemChanged += domainUpDown1_SelectedItemChanged;
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(557, 131);
+            label4.Location = new Point(538, 131);
             label4.Name = "label4";
             label4.Size = new Size(94, 15);
             label4.TabIndex = 9;
@@ -159,7 +151,7 @@
             // cmbCategoria
             // 
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(306, 191);
+            cmbCategoria.Location = new Point(294, 192);
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(313, 23);
             cmbCategoria.TabIndex = 11;
@@ -194,6 +186,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Location = new Point(387, 242);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
@@ -202,15 +195,15 @@
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
-            // btnConcertar
+            // btnConsultar
             // 
-            btnConcertar.Location = new Point(489, 242);
-            btnConcertar.Name = "btnConcertar";
-            btnConcertar.Size = new Size(75, 23);
-            btnConcertar.TabIndex = 16;
-            btnConcertar.Text = "&Consertar";
-            btnConcertar.UseVisualStyleBackColor = true;
-            btnConcertar.Click += btnConsertar_Click;
+            btnConsultar.Location = new Point(489, 242);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.TabIndex = 16;
+            btnConsultar.Text = "&Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsertar_Click;
             // 
             // dgProdutos
             // 
@@ -218,11 +211,11 @@
             dgProdutos.AllowUserToDeleteRows = false;
             dgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgProdutos.Columns.AddRange(new DataGridViewColumn[] { clnCategoria, clnCodigoBarras, clnDescricao, clnValorUnit, clnUnidadeVenda, clnCategor, clnEstoqueMinimo, clnDesconto, clnDataCadastro });
-            dgProdutos.Location = new Point(147, 288);
+            dgProdutos.Location = new Point(133, 272);
             dgProdutos.Name = "dgProdutos";
             dgProdutos.ReadOnly = true;
             dgProdutos.RowHeadersVisible = false;
-            dgProdutos.Size = new Size(504, 150);
+            dgProdutos.Size = new Size(504, 166);
             dgProdutos.TabIndex = 17;
             dgProdutos.CellContentClick += dgProdutos_ContentClick;
             // 
@@ -233,7 +226,7 @@
             clnCategoria.MinimumWidth = 8;
             clnCategoria.Name = "clnCategoria";
             clnCategoria.ReadOnly = true;
-            clnCategoria.Width = 50;
+            clnCategoria.Width = 30;
             // 
             // clnCodigoBarras
             // 
@@ -289,6 +282,7 @@
             clnDataCadastro.HeaderText = "Data Cadastro";
             clnDataCadastro.Name = "clnDataCadastro";
             clnDataCadastro.ReadOnly = true;
+            clnDataCadastro.Width = 130;
             // 
             // label6
             // 
@@ -303,7 +297,7 @@
             // lbCategoria
             // 
             lbCategoria.AutoSize = true;
-            lbCategoria.Location = new Point(306, 174);
+            lbCategoria.Location = new Point(294, 174);
             lbCategoria.Name = "lbCategoria";
             lbCategoria.Size = new Size(58, 15);
             lbCategoria.TabIndex = 19;
@@ -318,16 +312,24 @@
             label7.TabIndex = 20;
             label7.Text = "Descrição";
             // 
+            // dmEstoqueMinimo
+            // 
+            dmEstoqueMinimo.Location = new Point(564, 149);
+            dmEstoqueMinimo.Name = "dmEstoqueMinimo";
+            dmEstoqueMinimo.Size = new Size(43, 23);
+            dmEstoqueMinimo.TabIndex = 21;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dmEstoqueMinimo);
             Controls.Add(label7);
             Controls.Add(lbCategoria);
             Controls.Add(label6);
             Controls.Add(dgProdutos);
-            Controls.Add(btnConcertar);
+            Controls.Add(btnConsultar);
             Controls.Add(btnEditar);
             Controls.Add(btnAdicionar);
             Controls.Add(label5);
@@ -335,12 +337,11 @@
             Controls.Add(cmbCategoria);
             Controls.Add(txtDescricao);
             Controls.Add(label4);
-            Controls.Add(dmEstoqueMinimo);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtUnidadeVenda);
-            Controls.Add(txtValorUnitario);
+            Controls.Add(txtValorUnit);
             Controls.Add(txtCodigoBarras);
             Controls.Add(lbId);
             Controls.Add(txtId);
@@ -348,6 +349,7 @@
             Text = "FrmProduto";
             Load += FrmProduto_Load;
             ((System.ComponentModel.ISupportInitialize)dgProdutos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dmEstoqueMinimo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -357,12 +359,11 @@
         private TextBox txtId;
         private Label lbId;
         private TextBox txtCodigoBarras;
-        private TextBox txtValorUnitario;
+        private TextBox txtValorUnit;
         private TextBox txtUnidadeVenda;
         private Label label1;
         private Label label2;
         private Label label3;
-        private DomainUpDown dmEstoqueMinimo;
         private Label label4;
         private TextBox txtDescricao;
         private ComboBox cmbCategoria;
@@ -370,11 +371,12 @@
         private Label label5;
         private Button btnAdicionar;
         private Button btnEditar;
-        private Button btnConcertar;
+        private Button btnConsultar;
         private DataGridView dgProdutos;
         private Label label6;
         private Label lbCategoria;
         private Label label7;
+        private NumericUpDown dmEstoqueMinimo;
         private DataGridViewTextBoxColumn clnCategoria;
         private DataGridViewTextBoxColumn clnCodigoBarras;
         private DataGridViewTextBoxColumn clnDescricao;

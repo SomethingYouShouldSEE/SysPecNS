@@ -11,48 +11,88 @@ using System.Windows.Forms;
 
 namespace SysPecNSDesk
 {
-    public partial class FrmProduto : Form
+    public partial class FrmProduto : Form // Tudo que há em Form sera herado para FrmProduto, pode ser usado para outra classe acessar qualquer coisa da outra / classe não podera ser estatica
     {
         public FrmProduto()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            Produto produto = new(txtCodigoBarras.Text,txtDescricao.Text,
-                double.Parse(txtUnidadeVenda.Text),txtUnidadeVenda.Text,
+            Produto produto = new(txtCodigoBarras.Text,
+                txtDescricao.Text,
+                double.Parse(txtUnidadeVenda.Text), // Transformando string em double com parse
+                txtUnidadeVenda.Text, 
                 Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
                 (int)dmEstoqueMinimo.Value,double.Parse(txtDesconto.Text)
                 );
 
             produto.Inserir();
-        
-            if (produto.Id>0)
-            {
-
-            }
             
-                
-                
-                );
+               
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            Produto produto = new(
+                int.Parse(txtId.Text),
+                txtCodigoBarras.Text, txtDescricao.Text,
+                double.Parse(txtValorUnit.Text),
+                txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (double)dmEstoqueMinimo.Value,
+                double.Parse(txtDesconto.Text),
+                null,
+                null
+                );
+            produto.Atualizar();
+            MessageBox.Show($"Produto {produto.Id} - {produto.Descricao} atualizado");
+            btnEditar.Enabled = false;
+            txtId.ReadOnly = true;
+            btnConsultar.Text = "&Consultar";
+            LimpaControles();
+            FrmProduto_Load(sender, e);
+   
+        }
 
+        private void LimpaControles()
+        {
+            txtCodigoBarras.Clear();
+            txtValorUnit.Clear();
+            txtDescricao.Clear();
+            txtDesconto.Clear();
         }
 
         private void btnConsertar_Click(object sender, EventArgs e)
         {
+            if (btnConsultar.Text == "&Consultar")
+            {
+                txtCodigoBarras.Clear();
+                txtValorUnit.Clear();
+                txtDescricao.Clear();
+                txtDesconto.Clear();
+                dmEstoqueMinimo.Value = 0;
+                btnConsultar.Text = "&ObterPorId";
+                txtId.Focus();
 
+            }
+            else
+            {
+                if (txtId.Text.Length > 0)
+                {
+                    Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
+                    txtCodigoBarras.Text = produto.CodBar;
+                    txtValorUnit.Text = Convert.ToString(produto.ValorUnit);
+                    txtDescricao.Text = produto.Descricao;
+                    txtDesconto.Text = produto.ClasseDesconto.ToString();
+                    txtUnidadeVenda.Text = produto.UnidadeVenda;
+                    cmbCategoria.SelectedIndex = cmbCategoria.FindString(produto.Categoria.Nome);
+                    btnEditar.Enabled = true;
+                }
+            }
         }
 
         private void CarregaGrid(string nome = "")
@@ -61,14 +101,9 @@ namespace SysPecNSDesk
             dgProdutos.Rows.Clear();
             int cont = 0;
 
-            var produtos = Produto.ObterLista();
-            cmbCategoria.DataSource = produtos;
-            cmbCategoria.DisplayMember = "Nome";
-            cmbCategoria.ValueMember = "Id";
 
             foreach (var produto in lista)
             {
-
 
                 dgProdutos.Rows.Add();
                 dgProdutos.Rows[cont].Cells[0].Value = produto.Id;
@@ -76,7 +111,7 @@ namespace SysPecNSDesk
                 dgProdutos.Rows[cont].Cells[2].Value = produto.Descricao;
                 dgProdutos.Rows[cont].Cells[3].Value = produto.ValorUnit;
                 dgProdutos.Rows[cont].Cells[4].Value = produto.UnidadeVenda;
-                dgProdutos.Rows[cont].Cells[5].Value = produto.Categoria.Nome;
+                dgProdutos.Rows[cont].Cells[5].Value = produto.Categoria;
                 dgProdutos.Rows[cont].Cells[6].Value = produto.EstoqueMinimo;
                 dgProdutos.Rows[cont].Cells[7].Value = produto.ClasseDesconto;
                 dgProdutos.Rows[cont].Cells[8].Value = produto.DataCad;
@@ -92,14 +127,14 @@ namespace SysPecNSDesk
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
-
+            var categoria = Categoria.ObterLista();
+            cmbCategoria.DataSource = categoria;
+            cmbCategoria.DisplayMember = "Nome";
+            cmbCategoria.ValueMember = "Id";
+            CarregaGrid();
         }
 
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
+  
         private void dgProdutos_ContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
