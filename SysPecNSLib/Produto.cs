@@ -87,7 +87,6 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
-
         public void Atualizar()
         {
             var cmd = Banco.Abrir();
