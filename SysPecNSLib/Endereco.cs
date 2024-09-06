@@ -82,8 +82,78 @@ namespace SysPecNSLib
                 Cli_Id = dr.GetInt32(0);
             }
 
+        }
 
+        public void Deletar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_delete";
+            cmd.ExecuteNonQuery();
+        }
 
+        public void Atualizar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_update";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spcep", CEP);
+            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+            cmd.Parameters.AddWithValue("spnumero", Numero);
+            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+            cmd.Parameters.AddWithValue("spbairro", Bairro);
+            cmd.Parameters.AddWithValue("spcidade", Cidade);
+            cmd.Parameters.AddWithValue("spuf", UF);
+            cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_Endereco);
+            cmd.ExecuteNonQuery();
+        }
+
+        public static Endereco ObterPorId(int id)
+        {
+            Endereco endereco = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from endereco where id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                endereco = new(
+                    dr.GetInt32(0),
+                    dr.GetInt32(1),
+                    dr.GetChar(2),
+                    dr.GetString(3),
+                    dr.GetString(4),
+                    dr.GetString(5),
+                    dr.GetString(6),
+                    dr.GetString(7),
+                    dr.GetChar(8),
+                    dr.GetChar(9)
+                    );
+            }
+            return endereco;
+        }
+        public static List<Endereco> ObterLista()
+        {
+            List<Endereco> endereco = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "select * from endereco order by cidade";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                endereco.Add(new(
+                     dr.GetInt32(0),
+                     dr.GetInt32(1),
+                     dr.GetChar(2),
+                     dr.GetString(3),
+                     dr.GetString(4),
+                     dr.GetString(5),
+                     dr.GetString(6),
+                     dr.GetString(7),
+                     dr.GetChar(8),
+                     dr.GetChar(9))
+                     );
+            }
+            return endereco;
         }
 
     }
