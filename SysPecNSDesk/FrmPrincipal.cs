@@ -24,7 +24,14 @@ namespace SysPecNSDesk
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            FrmLogin frmLogin = new();
+            //frmLogin.MdiParent = this; Tirando o FrmPrincipal como Pai para FrmLogin ter Patencia sobre o FrmPrincipal
+            //frmLogin.Show();
+            frmLogin.ShowDialog(); //Usado par
 
+            Text += $"({Program.UsarioLogado.Email})"; // Bota o email na parte superior da Tela
+
+            toolStripStatusLabel1.Text = $"{Program.UsarioLogado.Nome} - {Program.UsarioLogado.Nivel.Nome}"; // Pega o informações de Classe usuario e colocaca aqui + Nivel
         }
 
         private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -76,6 +83,13 @@ namespace SysPecNSDesk
             FrmProduto frmproduto = new();
             frmproduto.MdiParent = this;
             frmproduto.Show();
+        }
+
+        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //FrmEndereco frmendereco = new();
+            //frmEndereco.MdiParent = this;
+            //frmEndereco.Show();
         }
     }
 }

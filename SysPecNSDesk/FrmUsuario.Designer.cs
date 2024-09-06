@@ -30,6 +30,11 @@
         {
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             dgvUsuarios = new DataGridView();
+            clnid = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
+            clnNivel = new DataGridViewTextBoxColumn();
+            clnAtivo = new DataGridViewCheckBoxColumn();
             btnInserir = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -48,11 +53,6 @@
             btnDeletar = new Button();
             txtBusca = new TextBox();
             btnCancelar = new Button();
-            clnid = new DataGridViewTextBoxColumn();
-            clnNome = new DataGridViewTextBoxColumn();
-            clnEmail = new DataGridViewTextBoxColumn();
-            clnNivel = new DataGridViewTextBoxColumn();
-            clnAtivo = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -77,6 +77,46 @@
             dgvUsuarios.TabIndex = 0;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
+            // 
+            // clnid
+            // 
+            clnid.DividerWidth = 1;
+            clnid.Frozen = true;
+            clnid.HeaderText = "ID";
+            clnid.Name = "clnid";
+            clnid.ReadOnly = true;
+            clnid.Width = 50;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 150;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Email";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 150;
+            // 
+            // clnNivel
+            // 
+            clnNivel.Frozen = true;
+            clnNivel.HeaderText = "Nível";
+            clnNivel.Name = "clnNivel";
+            clnNivel.ReadOnly = true;
+            // 
+            // clnAtivo
+            // 
+            clnAtivo.Frozen = true;
+            clnAtivo.HeaderText = "Ativo";
+            clnAtivo.Name = "clnAtivo";
+            clnAtivo.ReadOnly = true;
+            clnAtivo.Width = 50;
             // 
             // btnInserir
             // 
@@ -143,6 +183,7 @@
             txtId.ReadOnly = true;
             txtId.Size = new Size(67, 23);
             txtId.TabIndex = 7;
+            txtId.TextChanged += txtId_TextChanged;
             // 
             // txtNome
             // 
@@ -245,46 +286,6 @@
             btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += button1_Click;
-            // 
-            // clnid
-            // 
-            clnid.DividerWidth = 1;
-            clnid.Frozen = true;
-            clnid.HeaderText = "ID";
-            clnid.Name = "clnid";
-            clnid.ReadOnly = true;
-            clnid.Width = 50;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 150;
-            // 
-            // clnEmail
-            // 
-            clnEmail.Frozen = true;
-            clnEmail.HeaderText = "Email";
-            clnEmail.Name = "clnEmail";
-            clnEmail.ReadOnly = true;
-            clnEmail.Width = 150;
-            // 
-            // clnNivel
-            // 
-            clnNivel.Frozen = true;
-            clnNivel.HeaderText = "Nível";
-            clnNivel.Name = "clnNivel";
-            clnNivel.ReadOnly = true;
-            // 
-            // clnAtivo
-            // 
-            clnAtivo.Frozen = true;
-            clnAtivo.HeaderText = "Ativo";
-            clnAtivo.Name = "clnAtivo";
-            clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 50;
             // 
             // FrmUsuario
             // 
