@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.BC;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -102,9 +103,9 @@ namespace SysPecNSLib
                     Cliente.ObeterPorId(dr.GetInt32(2)), // Pega o cliente do classe cliente
                     dr.GetDateTime(3), // Pega data do BANCO de dados
                     dr.GetString(4),
-                    dr.GetDouble(5)
+                    dr.GetDouble(5),
                     // [Incluir Lista de Items]
-                    // ItemPedido.ObterListaPoPedido(dr.GetInt32(0))
+                    ItemPedido.ObterListaPorPedido(dr.GetInt32(6))
 
                     );
 
@@ -174,8 +175,11 @@ namespace SysPecNSLib
 
             }
 
+            
+
             return pedidos;
         }
+        
 
     }
 }
