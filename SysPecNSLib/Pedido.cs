@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,26 +72,107 @@ namespace SysPecNSLib
 
         }
 
-        public void Alterar()
+        public void AlterarStatus()
         {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"update pedidos set desconto = {Desconto} where id = {Id}";
+        }
 
+        public void AtualizarDesconto()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
 
         }
 
-        public static Pedido ObterPorId(int Id)
+        public static Pedido ObterPorId(int id)
         {
             Pedido pedido = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where id = {id}";
+            var dr = cmd.ExecuteReader();
+            // retorna 1 registro ou nenhum registro
+            if (dr.Read())
+            {
+                pedido = new(
+                    dr.GetInt32(0),
+                    Usuario.ObeterPorId(dr.GetInt32(1)), // Pega nome do usuario
+                    Cliente.ObeterPorId(dr.GetInt32(2)), // Pega o cliente do classe cliente
+                    dr.GetDateTime(3), // Pega data do BANCO de dados
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    // [Incluir Lista de Items]
+                    // ItemPedido.ObterListaPoPedido(dr.GetInt32(0))
+
+                    );
+
+
+            }
 
             return pedido;
         }
 
-        public static List<Pedido> ObterLista(int idCLiente=0, int idUsuario=0)
+        public static List<Pedido> ObterLista()
         {
             List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos";
+            
 
+            return pedidos;
+        }
+      
+        public static List<Pedido> ObterListaPorCliente(int id) //Retorna lista de pedido, por cliente informado
+        {
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where cliente_id = {id}";
 
+            var dr = cmd.ExecuteReader();
+            while(dr.Read())
+            {
+                pedidos.Add(new(
+                    dr.GetInt32(0),
+                    Usuario.ObeterPorId(dr.GetInt32(1)), // Pega nome do usuario
+                    Cliente.ObeterPorId(dr.GetInt32(2)), // Pega o cliente do classe cliente
+                    dr.GetDateTime(3), // Pega data do BANCO de dados
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    // [Incluir Lista de Items]
+                    // ItemPedido.ObterListaPoPedido(dr.GetInt32(0))
+
+                    ));
+            }
+
+            return pedidos;
+        }
+
+        public static List<Pedido> ObterListaPorUsuario(int id) //Retorna lista de pedido, por cliente informado
+        {
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where usuario_id = {id}";
+            var dr = cmd.ExecuteReader();
+            while(dr.Read())
+            {
+                pedidos.Add(new(
+                    dr.GetInt32(0),
+                    Usuario.ObeterPorId(dr.GetInt32(1)), // Pega nome do usuario
+                    Cliente.ObeterPorId(dr.GetInt32(2)), // Pega o cliente do classe cliente
+                    dr.GetDateTime(3), // Pega data do BANCO de dados
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    // [Incluir Lista de Items]
+                    // ItemPedido.ObterListaPoPedido(dr.GetInt32(0))
+
+                    ));
+
+            }
 
             return pedidos;
         }
