@@ -1,6 +1,6 @@
 ﻿namespace SysPecNSDesk
 {
-    partial class FrmPrincipalNovo
+    partial class FrmPedidoNovo
     {
         /// <summary>
         /// Required designer variable.

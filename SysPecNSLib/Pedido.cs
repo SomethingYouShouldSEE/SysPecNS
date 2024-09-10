@@ -108,8 +108,6 @@ namespace SysPecNSLib
                     ItemPedido.ObterListaPorPedido(dr.GetInt32(6))
 
                     );
-
-
             }
 
             return pedido;

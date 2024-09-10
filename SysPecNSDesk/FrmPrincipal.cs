@@ -95,8 +95,8 @@ namespace SysPecNSDesk
      // private void 
      // {
      //     FrmPrincipalNovo frmPedido = new();
-     //     frmproduto.MdiParent = this;
-     //     frmproduto.Show();
+     //     frmpedido.MdiParent = this;
+     //     frmpedido.Show();
      // }
 
     }
