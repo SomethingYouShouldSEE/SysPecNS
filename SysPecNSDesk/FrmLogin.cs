@@ -28,7 +28,7 @@ namespace SysPecNSDesk
 
             if (txtEmail.Text!=string.Empty && txtSenha.Text!=string.Empty)
             {
-                var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text); // Se estiver Vazio vai para os debaixo
+                var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text); 
                 if (usuario.Id > 0)
                 {
                     if (usuario.Ativo)
@@ -44,7 +44,7 @@ namespace SysPecNSDesk
                 }
                 else
                 {
-                    MessageBox.Show("Usuario ou senha Invalidos \n Procure Gerencia");
+                    MessageBox.Show("Usuario ou senha Invalidos \n Procure Gerencia"); // Se estiver Vazio vai para os debaixo
 
                 }
 

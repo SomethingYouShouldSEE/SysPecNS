@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FrmEndereco.cs" />
+    <Compile Remove="FrmEndereco.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="FrmEndereco.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SysPecNSLib\SysPecNSLib.csproj" />
   </ItemGroup>
 

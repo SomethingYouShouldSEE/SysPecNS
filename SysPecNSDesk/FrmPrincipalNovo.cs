@@ -29,7 +29,7 @@ namespace SysPecNSDesk
                 Program.UsarioLogado,
                 Cliente.ObeterPorId(int.Parse(txtIdCliente.Text)),0
                 );
-            txtIdPedido.Text = pedido.Id;
+            txtIdPedido.Text =   pedido.Id.ToString();
             MessageBox.Show($"Novo pedido criado - {pedido.Id}");
         }
     }
