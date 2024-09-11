@@ -105,7 +105,7 @@ namespace SysPecNSLib
                 comandosSQL.CommandText = $"select * from usuarios where like '%{nome}%'";
             }
 
-            comandosSQL.CommandText = "select * from usuarios order by nome limit 10"; //Limita até dez no banco e conforme for necessario adiciona mais dez conforme o 'while'
+            comandosSQL.CommandText = "select * from usuarios order by nome limit 10;"; //Limita até dez no banco e conforme for necessario adiciona mais dez conforme o 'while'
             var dr = comandosSQL.ExecuteReader(); //Armazena o acima e executa
             while (dr.Read())
             {

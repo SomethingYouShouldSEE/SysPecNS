@@ -84,36 +84,51 @@ namespace SysPecNSDesk
         {
             var itens = ItemPedido.ObterListaPorPedido(int.Parse(txtIdPedido.Text));
             int linha = 0;
+            double desconto = 0;
             dgvItensPedido.Rows.Clear();
             foreach (var item in itens)
             {
                 dgvItensPedido.Rows.Add();
-                dgvItensPedido.Rows[linha].Cells[0].Value = item.Id;
+                dgvItensPedido.Rows[linha].Cells[0].Value = $"{linha + 1}";  //item.Id;
                 dgvItensPedido.Rows[linha].Cells[1].Value = item.Produto.CodBar;
                 dgvItensPedido.Rows[linha].Cells[2].Value = item.Produto.Descricao;
-                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit;
-                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade;
-                dgvItensPedido.Rows[linha].Cells[4].Value = item.Desconto;
-                dgvItensPedido.Rows[linha].Cells[4].Value = item.ValorUnit * item.Quantidade - item.Desconto;
+                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit.ToString("#0,00");
+                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade.ToString("#0,000"); // Esta em kilo por isso 3 '0'
+                dgvItensPedido.Rows[linha].Cells[4].Value = item.Desconto.ToString("#0,00");
+                dgvItensPedido.Rows[linha].Cells[4].Value = (item.ValorUnit * item.Quantidade - item.Desconto).ToString("#0,00");
                 linha++;
                 //total += item.ValorUnit * item.Quantidade - item.Desconto;
-
+                desconto += item.Desconto;
+                txtDescontoItens.Text = desconto.ToString("#0.00"); // Faz aparecer 2 casas decimais ,00
 
             }
         }
 
         private void txtCodbar_Leave()
         {
-            //  if (txtCodbar_Leave.TextLenght>0)
-            // {
-            //     var produto = Produto.ObterPorId(txtCodbar.Text); // Sobrecarga com String
-            //     txtDescricao.Text = produto.Descricao;
-            //     txtValorUnit.Text = produto.ValorUnit.ToString();
-            //     txtValorUnit.ReadOnly = true;
-            //     txtQuantidade.Focus();
-            //
-            //     
-            // }
+            if (txtCodbar.TextLength > 0)
+            {
+                 var produto = Produto.ObterPorId(txtCodbar.Text); // Sobrecarga com String
+                 txtDescricao.Text = produto.Descricao;
+                 txtValorUnit.Text = produto.ValorUnit.ToString();
+                if (produto.ClasseDesconto == 0)
+                {
+                txtDescontoItens.Enabled = false;
+                }
+                else
+                {
+                txtDescontoItens.Enabled = false;
+                }
+                 txtValorUnit.ReadOnly = true;
+                 txtQuantidade.Focus();
+            
+                 
+            }
+
+        }
+
+        private void txtCodbar_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

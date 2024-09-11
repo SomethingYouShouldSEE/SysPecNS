@@ -69,6 +69,8 @@
             label12 = new Label();
             txtTotal = new TextBox();
             label13 = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
             grbIdentificacao.SuspendLayout();
             grbItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensPedido).BeginInit();
@@ -151,6 +153,8 @@
             // 
             // grbItens
             // 
+            grbItens.Controls.Add(radioButton2);
+            grbItens.Controls.Add(radioButton1);
             grbItens.Controls.Add(dgvItensPedido);
             grbItens.Controls.Add(label8);
             grbItens.Controls.Add(label9);
@@ -336,6 +340,7 @@
             txtCodbar.Name = "txtCodbar";
             txtCodbar.Size = new Size(114, 23);
             txtCodbar.TabIndex = 0;
+            txtCodbar.TextChanged += txtCodbar_TextChanged;
             // 
             // txtDescontoItem
             // 
@@ -437,6 +442,28 @@
             label13.TabIndex = 5;
             label13.Text = "Total";
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(517, 0);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(81, 19);
+            radioButton1.TabIndex = 6;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Percentual";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(517, 17);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(47, 19);
+            radioButton2.TabIndex = 7;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Real";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
             // FrmPedidosNovo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -511,5 +538,7 @@
         private DataGridViewTextBoxColumn clnDesconto;
         private DataGridViewTextBoxColumn clnTotalItem;
         private Button btnInserirPedido;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

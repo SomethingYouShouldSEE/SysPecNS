@@ -21,6 +21,10 @@ namespace SysPecNSDesk
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
+            var nivel = Nivel.ObterLista();
+            cmbNivel.DataSource = nivel;
+            cmbNivel.DisplayMember = "Nome";
+            cmbNivel.ValueMember = "Id";
             CarregaGrid();
         }
 

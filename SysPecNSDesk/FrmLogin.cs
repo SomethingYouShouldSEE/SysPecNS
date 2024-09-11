@@ -50,10 +50,10 @@ namespace SysPecNSDesk
 
             }
              else
-            {
+             {
                 MessageBox.Show("Preencha Algo");
                 Application.Exit();
-            }
+             }
 
         }
        
