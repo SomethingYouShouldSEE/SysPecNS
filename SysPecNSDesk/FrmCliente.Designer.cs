@@ -30,6 +30,11 @@
         {
             txtIdCliente = new TextBox();
             dgvClientes = new DataGridView();
+            clnId = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnTelefone = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
+            clnAtivo = new DataGridViewTextBoxColumn();
             txtClienteNome = new TextBox();
             txtEmail = new TextBox();
             txtTelefone = new TextBox();
@@ -43,11 +48,6 @@
             label6 = new Label();
             mskDataNasc = new MaskedTextBox();
             label7 = new Label();
-            clnId = new DataGridViewTextBoxColumn();
-            clnNome = new DataGridViewTextBoxColumn();
-            clnTelefone = new DataGridViewTextBoxColumn();
-            clnEmail = new DataGridViewTextBoxColumn();
-            clnAtivo = new DataGridViewTextBoxColumn();
             btnInserir = new Button();
             btnUpdate = new Button();
             btnRemover = new Button();
@@ -71,6 +71,47 @@
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(612, 150);
             dgvClientes.TabIndex = 1;
+            dgvClientes.CellContentClick += dgvClientes_ContentClick;
+            // 
+            // clnId
+            // 
+            clnId.Frozen = true;
+            clnId.HeaderText = "ID";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            clnId.Width = 50;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 240;
+            // 
+            // clnTelefone
+            // 
+            clnTelefone.Frozen = true;
+            clnTelefone.HeaderText = "Telefone";
+            clnTelefone.Name = "clnTelefone";
+            clnTelefone.ReadOnly = true;
+            clnTelefone.Width = 130;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Data Nasc";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 130;
+            // 
+            // clnAtivo
+            // 
+            clnAtivo.Frozen = true;
+            clnAtivo.HeaderText = "Ativo";
+            clnAtivo.Name = "clnAtivo";
+            clnAtivo.ReadOnly = true;
+            clnAtivo.Width = 60;
             // 
             // txtClienteNome
             // 
@@ -194,46 +235,6 @@
             label7.TabIndex = 9;
             label7.Text = "Cliente";
             // 
-            // clnId
-            // 
-            clnId.Frozen = true;
-            clnId.HeaderText = "ID";
-            clnId.Name = "clnId";
-            clnId.ReadOnly = true;
-            clnId.Width = 50;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 240;
-            // 
-            // clnTelefone
-            // 
-            clnTelefone.Frozen = true;
-            clnTelefone.HeaderText = "Telefone";
-            clnTelefone.Name = "clnTelefone";
-            clnTelefone.ReadOnly = true;
-            clnTelefone.Width = 130;
-            // 
-            // clnEmail
-            // 
-            clnEmail.Frozen = true;
-            clnEmail.HeaderText = "Data Nasc";
-            clnEmail.Name = "clnEmail";
-            clnEmail.ReadOnly = true;
-            clnEmail.Width = 130;
-            // 
-            // clnAtivo
-            // 
-            clnAtivo.Frozen = true;
-            clnAtivo.HeaderText = "Ativo";
-            clnAtivo.Name = "clnAtivo";
-            clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 60;
-            // 
             // btnInserir
             // 
             btnInserir.Location = new Point(267, 238);
@@ -286,6 +287,7 @@
             Controls.Add(txtIdCliente);
             Name = "FrmCliente";
             Text = "FrmCliente";
+            Load += FrmCliente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();

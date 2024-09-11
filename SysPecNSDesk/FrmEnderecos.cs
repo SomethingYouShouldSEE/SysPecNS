@@ -16,5 +16,10 @@ namespace SysPecNSDesk
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_ContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
