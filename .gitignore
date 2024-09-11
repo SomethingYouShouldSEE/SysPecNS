@@ -365,3 +365,5 @@ FodyWeavers.xsd
 /SysPecNSDesk/FrmCliente.cs
 /SysPecNSDesk/FrmCliente.cs
 /SysPecNSDesk/FrmCliente.cs
+/SysPecNSLib/Cliente.cs
+/SysPecNSLib/Endereco.cs
