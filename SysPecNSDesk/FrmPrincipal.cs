@@ -92,12 +92,19 @@ namespace SysPecNSDesk
             //frmEndereco.Show();
         }
 
-     // private void 
-     // {
-     //     FrmPrincipalNovo frmPedido = new();
-     //     frmpedido.MdiParent = this;
-     //     frmpedido.Show();
-     // }
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPedidosNovo frmPedido = new();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
+        }
+
+        // private void 
+        // {
+        //     FrmPedidosNovo frmPedido = new();
+        //     frmpedido.MdiParent = this;
+        //     frmpedido.Show();
+        // }
 
     }
 }
