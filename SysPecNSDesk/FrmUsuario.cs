@@ -19,11 +19,6 @@ namespace SysPecNSDesk
             InitializeComponent();
         }
 
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
             CarregaGrid();
@@ -83,7 +78,7 @@ namespace SysPecNSDesk
                 var niveis = Nivel.ObterLista();
                 cmbNivel.DataSource = niveis; // Pega dados do niveis source aqui
                 cmbNivel.DisplayMember = "Nome";
-                cmbNivel.ValueMember = "Id";
+                cmbNivel.ValueMember = "Id"; // Valha o valor do ID e mostra o nome do Usuario
 
 
 
@@ -145,6 +140,23 @@ namespace SysPecNSDesk
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = 0;
+            int posicaoLinha = dgvUsuarios.CurrentRow.Index; // Ao clicar na grid pega o valor clicado e armazena aq
+            id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value);
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
         {
 
         }

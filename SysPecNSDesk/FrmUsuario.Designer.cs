@@ -75,10 +75,12 @@
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 0;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // clnid
             // 
+            clnid.DividerWidth = 1;
             clnid.Frozen = true;
             clnid.HeaderText = "ID";
             clnid.Name = "clnid";
@@ -178,8 +180,10 @@
             // 
             txtId.Location = new Point(146, 36);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(67, 23);
             txtId.TabIndex = 7;
+            txtId.TextChanged += txtId_TextChanged;
             // 
             // txtNome
             // 
@@ -319,11 +323,6 @@
 
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
         private DataGridView dgvUsuarios;
-        private DataGridViewTextBoxColumn clnid;
-        private DataGridViewTextBoxColumn clnNome;
-        private DataGridViewTextBoxColumn clnEmail;
-        private DataGridViewTextBoxColumn clnNivel;
-        private DataGridViewCheckBoxColumn clnAtivo;
         private Button btnInserir;
         private Label label1;
         private Label label2;
@@ -342,5 +341,10 @@
         private Button btnDeletar;
         private TextBox txtBusca;
         private Button btnCancelar;
+        private DataGridViewTextBoxColumn clnid;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnEmail;
+        private DataGridViewTextBoxColumn clnNivel;
+        private DataGridViewCheckBoxColumn clnAtivo;
     }
 }
