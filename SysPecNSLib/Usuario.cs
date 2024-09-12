@@ -86,7 +86,6 @@ namespace SysPecNSLib
                     dr.GetString(3),
                     Nivel.ObterPorId(dr.GetInt32(4)), //Pega obter por id da classe Nivel
                     dr.GetBoolean(5));
-
             }
 
             return usuario;
@@ -175,6 +174,7 @@ namespace SysPecNSLib
             cmd.CommandText = $"update usuarios set ativo = 1 where = {id}";
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
+
         }
     }
 }

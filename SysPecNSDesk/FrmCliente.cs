@@ -61,5 +61,21 @@ namespace SysPecNSDesk
                 cont++;
             }
         }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+
+            Cliente cliente = new(
+                txtClienteNome.Text,
+                txtEmail.Text,
+                mskCPF.Text,
+                txtTelefone.Text,
+                DateTime.Parse(mskDataNasc.Text) // Convertento Text para date time
+
+                );
+
+                
+
+        }
     }
 }

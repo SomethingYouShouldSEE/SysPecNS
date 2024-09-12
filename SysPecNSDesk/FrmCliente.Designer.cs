@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtIdCliente = new TextBox();
             dgvClientes = new DataGridView();
             clnId = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
@@ -40,7 +39,6 @@
             txtTelefone = new TextBox();
             chkAtivo = new CheckBox();
             mskCPF = new MaskedTextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -53,14 +51,6 @@
             btnRemover = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
-            // 
-            // txtIdCliente
-            // 
-            txtIdCliente.Location = new Point(129, 68);
-            txtIdCliente.Name = "txtIdCliente";
-            txtIdCliente.Size = new Size(61, 23);
-            txtIdCliente.TabIndex = 0;
-            txtIdCliente.TextAlign = HorizontalAlignment.Center;
             // 
             // dgvClientes
             // 
@@ -115,7 +105,7 @@
             // 
             // txtClienteNome
             // 
-            txtClienteNome.Location = new Point(196, 68);
+            txtClienteNome.Location = new Point(129, 70);
             txtClienteNome.Name = "txtClienteNome";
             txtClienteNome.Size = new Size(250, 23);
             txtClienteNome.TabIndex = 0;
@@ -129,7 +119,7 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(537, 68);
+            txtTelefone.Location = new Point(470, 70);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(140, 23);
             txtTelefone.TabIndex = 0;
@@ -147,28 +137,18 @@
             // 
             // mskCPF
             // 
-            mskCPF.Location = new Point(452, 68);
+            mskCPF.Location = new Point(385, 70);
             mskCPF.Mask = "000.000.000.00";
             mskCPF.Name = "mskCPF";
             mskCPF.Size = new Size(79, 23);
             mskCPF.TabIndex = 3;
             mskCPF.TextAlign = HorizontalAlignment.Center;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(129, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(23, 19);
-            label1.TabIndex = 4;
-            label1.Text = "ID";
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(196, 48);
+            label2.Location = new Point(129, 48);
             label2.Name = "label2";
             label2.Size = new Size(46, 19);
             label2.TabIndex = 5;
@@ -178,7 +158,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(452, 46);
+            label3.Location = new Point(385, 48);
             label3.Name = "label3";
             label3.Size = new Size(33, 19);
             label3.TabIndex = 6;
@@ -188,7 +168,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(537, 46);
+            label4.Location = new Point(470, 48);
             label4.Name = "label4";
             label4.Size = new Size(59, 19);
             label4.TabIndex = 7;
@@ -243,6 +223,7 @@
             btnInserir.TabIndex = 10;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnUpdate
             // 
@@ -276,7 +257,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(mskDataNasc);
             Controls.Add(mskCPF);
             Controls.Add(chkAtivo);
@@ -284,7 +264,6 @@
             Controls.Add(txtTelefone);
             Controls.Add(txtEmail);
             Controls.Add(txtClienteNome);
-            Controls.Add(txtIdCliente);
             Name = "FrmCliente";
             Text = "FrmCliente";
             Load += FrmCliente_Load;
@@ -294,15 +273,12 @@
         }
 
         #endregion
-
-        private TextBox txtIdCliente;
         private DataGridView dgvClientes;
         private TextBox txtClienteNome;
         private TextBox txtEmail;
         private TextBox txtTelefone;
         private CheckBox chkAtivo;
         private MaskedTextBox mskCPF;
-        private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;

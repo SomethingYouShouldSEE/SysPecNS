@@ -23,30 +23,47 @@ namespace SysPecNSLib
             Id = 0;
         }
 
-        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email,DateTime timestamp, DateTime datanasc, bool ativo, int endereco)
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email,DateTime timestamp, DateTime? datanasc, bool ativo, int endereco)
         {
             Id = id;
             Nome = nome;
             Email = email;
             CPF = cpf;
             Telefone = telefone;
-            Email = email;
             TimeStamp = timestamp;
             DataNasc = datanasc;
             Ativo = ativo;
             Endereco = endereco;
         }
 
-        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime timestamp, DateTime datanasc, bool ativo, int endereco)
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime timestamp, DateTime? datanasc, bool ativo, int endereco)
         {
             Nome = nome;
             Email = email;
             CPF = cpf;
             Telefone = telefone;
-            Email = email;
             TimeStamp = timestamp;
             DataNasc = datanasc;
             Ativo = ativo;
+        }
+
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime datanasc, bool ativo, int endereco)
+        {
+            Nome = nome;
+            Email = email;
+            CPF = cpf;
+            Telefone = telefone;
+            DataNasc = datanasc;
+            Ativo = ativo;
+        }
+
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime? datanasc)
+        {
+            Nome = nome;
+            Email = email;
+            CPF = cpf;
+            Telefone = telefone;
+            DataNasc = datanasc;
         }
 
         public void Inserir()
