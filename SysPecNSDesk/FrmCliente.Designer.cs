@@ -45,8 +45,11 @@
             btnRemover = new Button();
             clnId = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
+            clnCPF = new DataGridViewTextBoxColumn();
             clnTelefone = new DataGridViewTextBoxColumn();
+            clnEmails = new DataGridViewTextBoxColumn();
             clnEmail = new DataGridViewTextBoxColumn();
+            clnTimeStamp = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
@@ -54,11 +57,11 @@
             // dgvClientes
             // 
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnTelefone, clnEmail, clnAtivo });
-            dgvClientes.Location = new Point(98, 288);
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnCPF, clnTelefone, clnEmails, clnEmail, clnTimeStamp, clnAtivo });
+            dgvClientes.Location = new Point(60, 288);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.RowHeadersVisible = false;
-            dgvClientes.Size = new Size(612, 150);
+            dgvClientes.Size = new Size(668, 150);
             dgvClientes.TabIndex = 1;
             dgvClientes.CellClick += dgvClientes_ContentClick;
             dgvClientes.CellContentClick += dgvClientes_ContentClick;
@@ -210,6 +213,13 @@
             clnNome.ReadOnly = true;
             clnNome.Width = 240;
             // 
+            // clnCPF
+            // 
+            clnCPF.Frozen = true;
+            clnCPF.HeaderText = "CPF";
+            clnCPF.Name = "clnCPF";
+            clnCPF.ReadOnly = true;
+            // 
             // clnTelefone
             // 
             clnTelefone.Frozen = true;
@@ -218,6 +228,13 @@
             clnTelefone.ReadOnly = true;
             clnTelefone.Width = 130;
             // 
+            // clnEmails
+            // 
+            clnEmails.Frozen = true;
+            clnEmails.HeaderText = "Email";
+            clnEmails.Name = "clnEmails";
+            clnEmails.ReadOnly = true;
+            // 
             // clnEmail
             // 
             clnEmail.Frozen = true;
@@ -225,6 +242,12 @@
             clnEmail.Name = "clnEmail";
             clnEmail.ReadOnly = true;
             clnEmail.Width = 130;
+            // 
+            // clnTimeStamp
+            // 
+            clnTimeStamp.Frozen = true;
+            clnTimeStamp.HeaderText = "Cadastro";
+            clnTimeStamp.Name = "clnTimeStamp";
             // 
             // clnAtivo
             // 
@@ -282,8 +305,11 @@
         private Button btnRemover;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnCPF;
         private DataGridViewTextBoxColumn clnTelefone;
+        private DataGridViewTextBoxColumn clnEmails;
         private DataGridViewTextBoxColumn clnEmail;
+        private DataGridViewTextBoxColumn clnTimeStamp;
         private DataGridViewCheckBoxColumn clnAtivo;
     }
 }

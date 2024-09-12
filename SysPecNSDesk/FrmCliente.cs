@@ -44,9 +44,12 @@ namespace SysPecNSDesk
 
             var lista = Cliente.ObterLista();
             int cont = 0;
+            //var test = Cliente
+            
             dgvClientes.Rows.Clear();
             foreach (var row in lista)
             {
+
 
                 dgvClientes.Rows.Add(); // Adiciona linha
                 dgvClientes.Rows[cont].Cells[0].Value = row.Id; // Cells = Coluna
@@ -63,8 +66,13 @@ namespace SysPecNSDesk
             }
         }
 
+           
+
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            mskCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskDataNasc.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
 
             Cliente cliente = new(
                 txtClienteNome.Text,
@@ -101,7 +109,7 @@ namespace SysPecNSDesk
             Cliente cliente = new();
             var current = dgvClientes.CurrentCell;
 
-            
+        
             //cliente.Arquivar();
 
         }

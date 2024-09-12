@@ -14,8 +14,8 @@ namespace SysPecNSLib
         public string? CPF { get; set; }
         public string? Telefone { get; set; }
         public string? Email { get; set; }
-        public DateTime TimeStamp { get; set; }
         public DateTime? DataNasc { get; set; }
+        public DateTime TimeStamp { get; set; }
         public bool? Ativo { get; set; }
         public int Endereco { get; set; }
         public Cliente() 
@@ -112,8 +112,7 @@ namespace SysPecNSLib
                     dr.GetString(4),
                     dr.GetDateTime(5),
                     dr.GetDateTime(6),
-                    dr.GetBoolean(7),
-                    dr.GetInt32(8)
+                    dr.GetBoolean(7)
                     );
             }
 
