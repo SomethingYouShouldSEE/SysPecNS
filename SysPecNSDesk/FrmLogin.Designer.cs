@@ -83,6 +83,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(188, 23);
             txtEmail.TabIndex = 4;
+            txtEmail.Text = "paual@gamil.com";
             // 
             // txtSenha
             // 

@@ -83,6 +83,18 @@ namespace SysPecNSLib
             }
         }
 
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime timestamp, DateTime? datanasc, bool ativo)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            CPF = cpf;
+            Telefone = telefone;
+            TimeStamp = timestamp;
+            DataNasc = datanasc;
+            Ativo = ativo;
+        }
+
         public static Cliente ObeterPorId(int id)
         {
             Cliente cliente = new();
@@ -113,14 +125,14 @@ namespace SysPecNSLib
             List<Cliente> lista = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            if(nome == "")
-            {
-                cmd.CommandText = "select * from clientes order by nome";
-            }
-            else
-            {
-                cmd.CommandText = $"select * from clientes where like '%{nome}%'";
-            }
+           // if(nome == "")
+           // {
+           //     cmd.CommandText = "select * from clientes order by nome";
+           // }
+           // else
+           //  {
+           //     cmd.CommandText = $"select * from clientes where like '%{nome}%'";
+           // }
 
             cmd.CommandText = "select * from clientes order by nome limit 10";
             var dr = cmd.ExecuteReader();
@@ -135,8 +147,7 @@ namespace SysPecNSLib
                         dr.GetString(4),
                         dr.GetDateTime(5),
                         dr.GetDateTime(6),
-                        dr.GetBoolean(7),
-                        dr.GetInt32(8)
+                        dr.GetBoolean(7)
                         )
                     );
             }

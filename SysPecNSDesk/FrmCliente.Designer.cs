@@ -29,15 +29,9 @@
         private void InitializeComponent()
         {
             dgvClientes = new DataGridView();
-            clnId = new DataGridViewTextBoxColumn();
-            clnNome = new DataGridViewTextBoxColumn();
-            clnTelefone = new DataGridViewTextBoxColumn();
-            clnEmail = new DataGridViewTextBoxColumn();
-            clnAtivo = new DataGridViewTextBoxColumn();
             txtClienteNome = new TextBox();
             txtEmail = new TextBox();
             txtTelefone = new TextBox();
-            chkAtivo = new CheckBox();
             mskCPF = new MaskedTextBox();
             label2 = new Label();
             label3 = new Label();
@@ -49,6 +43,11 @@
             btnInserir = new Button();
             btnUpdate = new Button();
             btnRemover = new Button();
+            clnId = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnTelefone = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
+            clnAtivo = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -61,47 +60,8 @@
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(612, 150);
             dgvClientes.TabIndex = 1;
+            dgvClientes.CellClick += dgvClientes_ContentClick;
             dgvClientes.CellContentClick += dgvClientes_ContentClick;
-            // 
-            // clnId
-            // 
-            clnId.Frozen = true;
-            clnId.HeaderText = "ID";
-            clnId.Name = "clnId";
-            clnId.ReadOnly = true;
-            clnId.Width = 50;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 240;
-            // 
-            // clnTelefone
-            // 
-            clnTelefone.Frozen = true;
-            clnTelefone.HeaderText = "Telefone";
-            clnTelefone.Name = "clnTelefone";
-            clnTelefone.ReadOnly = true;
-            clnTelefone.Width = 130;
-            // 
-            // clnEmail
-            // 
-            clnEmail.Frozen = true;
-            clnEmail.HeaderText = "Data Nasc";
-            clnEmail.Name = "clnEmail";
-            clnEmail.ReadOnly = true;
-            clnEmail.Width = 130;
-            // 
-            // clnAtivo
-            // 
-            clnAtivo.Frozen = true;
-            clnAtivo.HeaderText = "Ativo";
-            clnAtivo.Name = "clnAtivo";
-            clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 60;
             // 
             // txtClienteNome
             // 
@@ -124,16 +84,6 @@
             txtTelefone.Size = new Size(140, 23);
             txtTelefone.TabIndex = 0;
             txtTelefone.TextChanged += textBox7_TextChanged;
-            // 
-            // chkAtivo
-            // 
-            chkAtivo.AutoSize = true;
-            chkAtivo.Location = new Point(233, 202);
-            chkAtivo.Name = "chkAtivo";
-            chkAtivo.Size = new Size(54, 19);
-            chkAtivo.TabIndex = 2;
-            chkAtivo.Text = "Ativo";
-            chkAtivo.UseVisualStyleBackColor = true;
             // 
             // mskCPF
             // 
@@ -242,6 +192,49 @@
             btnRemover.TabIndex = 10;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
+            // 
+            // clnId
+            // 
+            clnId.Frozen = true;
+            clnId.HeaderText = "ID";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            clnId.Width = 50;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 240;
+            // 
+            // clnTelefone
+            // 
+            clnTelefone.Frozen = true;
+            clnTelefone.HeaderText = "Telefone";
+            clnTelefone.Name = "clnTelefone";
+            clnTelefone.ReadOnly = true;
+            clnTelefone.Width = 130;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Data Nasc";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 130;
+            // 
+            // clnAtivo
+            // 
+            clnAtivo.Frozen = true;
+            clnAtivo.HeaderText = "Ativo";
+            clnAtivo.Name = "clnAtivo";
+            clnAtivo.ReadOnly = true;
+            clnAtivo.Resizable = DataGridViewTriState.True;
+            clnAtivo.SortMode = DataGridViewColumnSortMode.Automatic;
+            clnAtivo.Width = 60;
             // 
             // FrmCliente
             // 
@@ -259,7 +252,6 @@
             Controls.Add(label2);
             Controls.Add(mskDataNasc);
             Controls.Add(mskCPF);
-            Controls.Add(chkAtivo);
             Controls.Add(dgvClientes);
             Controls.Add(txtTelefone);
             Controls.Add(txtEmail);
@@ -277,7 +269,6 @@
         private TextBox txtClienteNome;
         private TextBox txtEmail;
         private TextBox txtTelefone;
-        private CheckBox chkAtivo;
         private MaskedTextBox mskCPF;
         private Label label2;
         private Label label3;
@@ -286,13 +277,13 @@
         private Label label6;
         private MaskedTextBox mskDataNasc;
         private Label label7;
+        private Button btnInserir;
+        private Button btnUpdate;
+        private Button btnRemover;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnTelefone;
         private DataGridViewTextBoxColumn clnEmail;
-        private DataGridViewTextBoxColumn clnAtivo;
-        private Button btnInserir;
-        private Button btnUpdate;
-        private Button btnRemover;
+        private DataGridViewCheckBoxColumn clnAtivo;
     }
 }

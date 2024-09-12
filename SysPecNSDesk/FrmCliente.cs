@@ -35,7 +35,7 @@ namespace SysPecNSDesk
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-
+            CarregaGrid();
         }
 
         private void CarregaGrid(string nome = "")
@@ -44,6 +44,7 @@ namespace SysPecNSDesk
 
             var lista = Cliente.ObterLista();
             int cont = 0;
+            dgvClientes.Rows.Clear();
             foreach (var row in lista)
             {
 
@@ -53,8 +54,8 @@ namespace SysPecNSDesk
                 dgvClientes.Rows[cont].Cells[2].Value = row.CPF;
                 dgvClientes.Rows[cont].Cells[3].Value = row.Telefone;
                 dgvClientes.Rows[cont].Cells[4].Value = row.Email;
-                dgvClientes.Rows[cont].Cells[5].Value = row.DataNasc;
-                dgvClientes.Rows[cont].Cells[6].Value = row.TimeStamp;
+                dgvClientes.Rows[cont].Cells[5].Value = row.DataNasc.ToString();
+                dgvClientes.Rows[cont].Cells[6].Value = row.TimeStamp.ToString();
                 dgvClientes.Rows[cont].Cells[7].Value = row.Ativo;
 
 
@@ -71,10 +72,37 @@ namespace SysPecNSDesk
                 mskCPF.Text,
                 txtTelefone.Text,
                 DateTime.Parse(mskDataNasc.Text) // Convertento Text para date time
-
                 );
+            cliente.Inserir();
 
-                
+            if (cliente.Id > 0)
+            {
+                txtClienteNome.Clear();
+                txtEmail.Clear(); // Limpa as partes da tabela de inserir
+                mskCPF.Clear();
+                txtTelefone.Clear();
+                mskDataNasc.Clear();
+
+                MessageBox.Show($"O usuario {cliente.Nome}, foi gravado com sucesso com o ID {cliente.Id}");
+
+                FrmCliente_Load(sender, e); // Recarega o usuario assim que for inserido
+            }
+            else
+            {
+                MessageBox.Show("Falha ao cadastrar");
+            }
+
+
+
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new();
+            var current = dgvClientes.CurrentCell;
+
+            
+            //cliente.Arquivar();
 
         }
     }

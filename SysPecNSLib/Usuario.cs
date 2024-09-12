@@ -87,7 +87,7 @@ namespace SysPecNSLib
                     Nivel.ObterPorId(dr.GetInt32(4)), //Pega obter por id da classe Nivel
                     dr.GetBoolean(5));
             }
-
+            cmd.Connection.Close();
             return usuario;
         }
         public static List<Usuario> ObterLista(string? nome = "") //Entrega Lista | ([string? nome = ""]) - Opcional se não haver valor ira usar sem
@@ -95,7 +95,7 @@ namespace SysPecNSLib
             List<Usuario> lista = new();
             var comandosSQL = Banco.Abrir();
             comandosSQL.CommandType = CommandType.Text;
-            if (nome =="")
+            if (nome == "")
             {
                 comandosSQL.CommandText = "select * from usuarios order by nome";
             }
@@ -119,7 +119,7 @@ namespace SysPecNSLib
                         )
                     );
             }
-
+            comandosSQL.Connection.Close();
             return lista;
         }
         public static Usuario EfetuarLogin(string email, string senha)
@@ -139,7 +139,7 @@ namespace SysPecNSLib
                         dr.GetBoolean(5)
                         );
             }
-
+            cmd.Connection.Close();
             return usuario;
         }
         public void Atualizar()
