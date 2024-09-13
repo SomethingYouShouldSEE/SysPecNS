@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmAtidade";
+            txtEstoqueId = new TextBox();
+            SuspendLayout();
+            // 
+            // txtEstoqueId
+            // 
+            txtEstoqueId.Location = new Point(22, 41);
+            txtEstoqueId.Name = "txtEstoqueId";
+            txtEstoqueId.Size = new Size(100, 23);
+            txtEstoqueId.TabIndex = 0;
+            // 
+            // FrmAtidade
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(txtEstoqueId);
+            Name = "FrmAtidade";
+            Text = "FrmAtidade";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox txtEstoqueId;
     }
 }

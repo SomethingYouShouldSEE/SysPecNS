@@ -31,12 +31,22 @@ namespace SysPecNSLib
 
         public void Estoque_Up(int id, decimal quant, DateTime data_mov)
         {
+            
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values ({id},{quant},{data_mov})";
             cmd.ExecuteNonQuery();
         }
-        
+        public static List<Estoque> ObterList()
+        {
+            List<Estoque> list = new();
+            var cmd = Banco.Abrir();
+
+
+
+
+            return list;
+        }
 
 
 
