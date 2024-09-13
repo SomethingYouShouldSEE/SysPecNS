@@ -12,49 +12,50 @@ namespace SysPecNSLib
     public class Estoque
     {
         public int Id { get; set; }
-        public double Quantidade { get; set; }
-        public DateTime Data_Movimento { get; set; }
-        public Pedido Barra { get; set; }
+        public decimal? Quantidade { get; set; }
+        public DateTime? Data_Movimento { get; set; }
+        public Pedido? Barra { get; set; }
 
-        public Estoque(int id, double quantidade, DateTime data_Movimento)
+        public Estoque(int id, decimal? quantidade, DateTime? data_Movimento)
         {
             Id = id;
             Quantidade = quantidade;
             Data_Movimento = data_Movimento;
         }
-        public Estoque(double quantidade, DateTime data_Movimento)
+        public Estoque(decimal? quantidade, DateTime? data_Movimento)
         {
             Quantidade = quantidade;
             Data_Movimento = data_Movimento;
         }
 
 
-        public void Estoque_Insert(decimal quant, DateTime data_mov)
+        public void Estoque_Insert(decimal quant)
         {
             
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values (0,{quant},{data_mov});";
+            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values (0,{quant},default);";
             cmd.ExecuteNonQuery();
 
-            cmd.Connection.Close();
+            //cmd.Connection.Close();
         }
         public static List<Estoque> ObterList()
         {
             List<Estoque> list = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from estoque;";
+            cmd.CommandText = "select * from estoques;";
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
-                dr.GetInt32(0);
-                dr.GetDecimal(1);
-                dr.GetDateTime(2);
+                list.Add(new(
+                dr.GetInt32(0),
+                dr.GetDecimal(1),
+                dr.GetDateTime(2)));              
             }
 
 
-            cmd.Connection.Close();
+            //cmd.Connection.Close();
             return list;
         }
 
@@ -62,12 +63,12 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"update estoque set quantidade = {quant},data_ultimo_movimento = default where {id};";
+            cmd.CommandText = $"update estoques set quantidade = {quant},data_ultimo_movimento = default where {id};";
             cmd.ExecuteNonQuery();
 
-            cmd.Connection.Close();
+            //cmd.Connection.Close();
         }
-        public 
+         
 
     }
 }

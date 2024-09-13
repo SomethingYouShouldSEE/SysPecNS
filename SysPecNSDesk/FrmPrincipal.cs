@@ -99,6 +99,13 @@ namespace SysPecNSDesk
             frmPedido.Show();
         }
 
+        private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAtidade frmEstoque = new();
+            frmEstoque.MdiParent = this;
+            frmEstoque.Show();
+        }
+
         // private void 
         // {
         //     FrmPedidosNovo frmPedido = new();

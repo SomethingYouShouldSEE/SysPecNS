@@ -20,7 +20,7 @@ namespace SysPecNSDesk
 
         private void FrmAtidade_Load(object sender, EventArgs e)
         {
-
+            CarregaGrid();
         }
 
         private void CarregaGrid()
@@ -34,18 +34,41 @@ namespace SysPecNSDesk
             dgvEstoque.Rows.Clear();
             foreach (var row in lista)
             {
-
-
                 dgvEstoque.Rows.Add(); // Adiciona linha
                 dgvEstoque.Rows[cont].Cells[0].Value = row.Id; // Cells = Coluna
-                dgvEstoque.Rows[cont].Cells[1].Value = row.Nome;
-                dgvEstoque.Rows[cont].Cells[2].Value = row.CPF;
+                dgvEstoque.Rows[cont].Cells[1].Value = row.Quantidade;
+                dgvEstoque.Rows[cont].Cells[2].Value = row.Data_Movimento;
 
                 cont++;
             }
         }
 
         private void txtQuant_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            if (txtProdID.Text && txtQuantAdd.Text)
+            {
+
+            }
+            else
+            {
+                //txtProdID.Clear;
+                //txtQuantAdd.Clear;
+                //Message
+            }
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

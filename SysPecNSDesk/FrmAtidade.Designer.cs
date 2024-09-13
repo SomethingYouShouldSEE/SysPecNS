@@ -42,8 +42,8 @@
             btnAtualizar = new Button();
             gbAdd = new GroupBox();
             gbUpt = new GroupBox();
-            label4 = new Label();
             txtQuantUpt = new TextBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             gbAdd.SuspendLayout();
             gbUpt.SuspendLayout();
@@ -59,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(76, 30);
+            label1.Location = new Point(78, 30);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 1;
@@ -75,6 +75,7 @@
             dgvEstoque.RowHeadersVisible = false;
             dgvEstoque.Size = new Size(350, 191);
             dgvEstoque.TabIndex = 2;
+            dgvEstoque.CellContentClick += dgvEstoque_CellContentClick;
             // 
             // clnID
             // 
@@ -134,12 +135,13 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(48, 148);
+            btnAdicionar.Location = new Point(50, 148);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 23);
             btnAdicionar.TabIndex = 7;
             btnAdicionar.Text = "Adionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnAtualizar
             // 
@@ -149,6 +151,7 @@
             btnAtualizar.TabIndex = 7;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // gbAdd
             // 
@@ -176,6 +179,14 @@
             gbUpt.TabIndex = 9;
             gbUpt.TabStop = false;
             // 
+            // txtQuantUpt
+            // 
+            txtQuantUpt.Location = new Point(40, 94);
+            txtQuantUpt.Name = "txtQuantUpt";
+            txtQuantUpt.Size = new Size(100, 23);
+            txtQuantUpt.TabIndex = 3;
+            txtQuantUpt.TextChanged += txtQuant_TextChanged;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -184,14 +195,6 @@
             label4.Size = new Size(69, 15);
             label4.TabIndex = 4;
             label4.Text = "Quantidade";
-            // 
-            // txtQuantUpt
-            // 
-            txtQuantUpt.Location = new Point(40, 94);
-            txtQuantUpt.Name = "txtQuantUpt";
-            txtQuantUpt.Size = new Size(100, 23);
-            txtQuantUpt.TabIndex = 3;
-            txtQuantUpt.TextChanged += txtQuant_TextChanged;
             // 
             // FrmAtidade
             // 
