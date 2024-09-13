@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace SysPecNSLib
 {
@@ -14,7 +15,6 @@ namespace SysPecNSLib
         public double Quantidade { get; set; }
         public DateTime Data_Movimento { get; set; }
         public Pedido Barra { get; set; }
-
 
         public Estoque(int id, double quantidade, DateTime data_Movimento)
         {
@@ -28,6 +28,14 @@ namespace SysPecNSLib
             Data_Movimento = data_Movimento;
         }
 
+
+        public void Estoque_Up(int id, decimal quant, DateTime data_mov)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values ({id},{quant},{data_mov})";
+            cmd.ExecuteNonQuery();
+        }
         
 
 
