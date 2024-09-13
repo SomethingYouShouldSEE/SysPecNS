@@ -66,6 +66,14 @@ namespace SysPecNSLib
             DataNasc = datanasc;
         }
 
+        public Cliente(string? nome, string? cpf, string? telefone, string? email)
+        {
+            Nome = nome;
+            Email = email;
+            CPF = cpf;
+            Telefone = telefone;
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();

@@ -108,8 +108,10 @@ namespace SysPecNSDesk
         {
             Cliente cliente = new();
             var current = dgvClientes.CurrentCell;
+            Convert.ToInt32(current);
+            cliente.Atualizar();
 
-        
+
             //cliente.Arquivar();
 
         }
