@@ -38,7 +38,7 @@ namespace SysPecNSDesk
             CarregaGrid();
         }
 
-        private void CarregaGrid(string nome = "")
+        private void CarregaGrid()
         {
             // preenchendo datagrid com os usuarios
 

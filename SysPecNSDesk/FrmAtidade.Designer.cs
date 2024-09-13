@@ -31,21 +31,27 @@
             txtEstoqueId = new TextBox();
             label1 = new Label();
             dgvEstoque = new DataGridView();
-            txtQuant = new TextBox();
-            label2 = new Label();
-            txtProdID = new TextBox();
             clnID = new DataGridViewTextBoxColumn();
             clnProdID = new DataGridViewTextBoxColumn();
             clnDataMov = new DataGridViewTextBoxColumn();
+            txtQuantAdd = new TextBox();
+            label2 = new Label();
+            txtProdID = new TextBox();
             label3 = new Label();
             btnAdicionar = new Button();
             btnAtualizar = new Button();
+            gbAdd = new GroupBox();
+            gbUpt = new GroupBox();
+            label4 = new Label();
+            txtQuantUpt = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
+            gbAdd.SuspendLayout();
+            gbUpt.SuspendLayout();
             SuspendLayout();
             // 
             // txtEstoqueId
             // 
-            txtEstoqueId.Location = new Point(50, 46);
+            txtEstoqueId.Location = new Point(66, 48);
             txtEstoqueId.Name = "txtEstoqueId";
             txtEstoqueId.Size = new Size(42, 23);
             txtEstoqueId.TabIndex = 0;
@@ -53,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 28);
+            label1.Location = new Point(76, 30);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 1;
@@ -69,29 +75,6 @@
             dgvEstoque.RowHeadersVisible = false;
             dgvEstoque.Size = new Size(350, 191);
             dgvEstoque.TabIndex = 2;
-            // 
-            // txtQuant
-            // 
-            txtQuant.Location = new Point(50, 138);
-            txtQuant.Name = "txtQuant";
-            txtQuant.Size = new Size(100, 23);
-            txtQuant.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(50, 120);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Quantidade";
-            // 
-            // txtProdID
-            // 
-            txtProdID.Location = new Point(50, 92);
-            txtProdID.Name = "txtProdID";
-            txtProdID.Size = new Size(100, 23);
-            txtProdID.TabIndex = 5;
             // 
             // clnID
             // 
@@ -116,10 +99,34 @@
             clnDataMov.ReadOnly = true;
             clnDataMov.Width = 200;
             // 
+            // txtQuantAdd
+            // 
+            txtQuantAdd.Location = new Point(37, 94);
+            txtQuantAdd.Name = "txtQuantAdd";
+            txtQuantAdd.Size = new Size(100, 23);
+            txtQuantAdd.TabIndex = 3;
+            txtQuantAdd.TextChanged += txtQuant_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(47, 76);
+            label2.Name = "label2";
+            label2.Size = new Size(69, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Quantidade";
+            // 
+            // txtProdID
+            // 
+            txtProdID.Location = new Point(63, 48);
+            txtProdID.Name = "txtProdID";
+            txtProdID.Size = new Size(42, 23);
+            txtProdID.TabIndex = 5;
+            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 74);
+            label3.Location = new Point(52, 30);
             label3.Name = "label3";
             label3.Size = new Size(64, 15);
             label3.TabIndex = 6;
@@ -127,7 +134,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(115, 192);
+            btnAdicionar.Location = new Point(48, 148);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 23);
             btnAdicionar.TabIndex = 7;
@@ -136,12 +143,55 @@
             // 
             // btnAtualizar
             // 
-            btnAtualizar.Location = new Point(265, 192);
+            btnAtualizar.Location = new Point(51, 149);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
             btnAtualizar.TabIndex = 7;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
+            // 
+            // gbAdd
+            // 
+            gbAdd.Controls.Add(btnAdicionar);
+            gbAdd.Controls.Add(txtQuantAdd);
+            gbAdd.Controls.Add(label2);
+            gbAdd.Controls.Add(label3);
+            gbAdd.Controls.Add(txtProdID);
+            gbAdd.Location = new Point(50, 28);
+            gbAdd.Name = "gbAdd";
+            gbAdd.Size = new Size(171, 187);
+            gbAdd.TabIndex = 8;
+            gbAdd.TabStop = false;
+            // 
+            // gbUpt
+            // 
+            gbUpt.Controls.Add(btnAtualizar);
+            gbUpt.Controls.Add(txtQuantUpt);
+            gbUpt.Controls.Add(label4);
+            gbUpt.Controls.Add(txtEstoqueId);
+            gbUpt.Controls.Add(label1);
+            gbUpt.Location = new Point(229, 28);
+            gbUpt.Name = "gbUpt";
+            gbUpt.Size = new Size(171, 187);
+            gbUpt.TabIndex = 9;
+            gbUpt.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(50, 76);
+            label4.Name = "label4";
+            label4.Size = new Size(69, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Quantidade";
+            // 
+            // txtQuantUpt
+            // 
+            txtQuantUpt.Location = new Point(40, 94);
+            txtQuantUpt.Name = "txtQuantUpt";
+            txtQuantUpt.Size = new Size(100, 23);
+            txtQuantUpt.TabIndex = 3;
+            txtQuantUpt.TextChanged += txtQuant_TextChanged;
             // 
             // FrmAtidade
             // 
@@ -149,21 +199,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(448, 450);
-            Controls.Add(btnAtualizar);
-            Controls.Add(btnAdicionar);
-            Controls.Add(label3);
-            Controls.Add(txtProdID);
-            Controls.Add(label2);
-            Controls.Add(txtQuant);
+            Controls.Add(gbUpt);
+            Controls.Add(gbAdd);
             Controls.Add(dgvEstoque);
-            Controls.Add(label1);
-            Controls.Add(txtEstoqueId);
             Name = "FrmAtidade";
             Text = "FrmAtidade";
             Load += FrmAtidade_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).EndInit();
+            gbAdd.ResumeLayout(false);
+            gbAdd.PerformLayout();
+            gbUpt.ResumeLayout(false);
+            gbUpt.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -171,7 +218,7 @@
         private TextBox txtEstoqueId;
         private Label label1;
         private DataGridView dgvEstoque;
-        private TextBox txtQuant;
+        private TextBox txtQuantAdd;
         private Label label2;
         private DataGridViewTextBoxColumn clnID;
         private DataGridViewTextBoxColumn clnProdID;
@@ -180,5 +227,9 @@
         private Label label3;
         private Button btnAdicionar;
         private Button btnAtualizar;
+        private GroupBox gbAdd;
+        private GroupBox gbUpt;
+        private TextBox txtQuantUpt;
+        private Label label4;
     }
 }

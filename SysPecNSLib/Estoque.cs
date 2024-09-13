@@ -62,7 +62,7 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"update estoque set quantidade = {quant} where {id}";
+            cmd.CommandText = $"update estoque set quantidade = {quant},data_ultimo_movimento = default where {id};";
             cmd.ExecuteNonQuery();
 
             cmd.Connection.Close();
