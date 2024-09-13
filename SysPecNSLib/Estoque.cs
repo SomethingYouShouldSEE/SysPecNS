@@ -29,7 +29,7 @@ namespace SysPecNSLib
         }
 
 
-        public void Estoque_Up(int id, decimal quant, DateTime data_mov)
+        public void Estoque_Insert(int id, decimal quant, DateTime data_mov)
         {
             
             var cmd = Banco.Abrir();
@@ -56,6 +56,7 @@ namespace SysPecNSLib
             return list;
         }
 
+        public static  
 
 
     }
