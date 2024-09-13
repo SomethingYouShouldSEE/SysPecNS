@@ -16,5 +16,10 @@ namespace SysPecNSDesk
         {
             InitializeComponent();
         }
+
+        private void FrmAtidade_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,13 +29,15 @@ namespace SysPecNSLib
         }
 
 
-        public void Estoque_Insert(int id, decimal quant, DateTime data_mov)
+        public void Estoque_Insert(decimal quant, DateTime data_mov)
         {
             
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values ({id},{quant},{data_mov});";
+            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values (0,{quant},{data_mov});";
             cmd.ExecuteNonQuery();
+
+            cmd.Connection.Close();
         }
         public static List<Estoque> ObterList()
         {
@@ -56,8 +58,16 @@ namespace SysPecNSLib
             return list;
         }
 
-        public static  
+        public void Estoque_Up_Quant(int id,decimal quant)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update estoque set quantidade = {quant} where {id}";
+            cmd.ExecuteNonQuery();
 
+            cmd.Connection.Close();
+        }
+        public 
 
     }
 }
