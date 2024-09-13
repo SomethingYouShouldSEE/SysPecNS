@@ -50,7 +50,7 @@ namespace SysPecNSDesk
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (txtProdID.Text && txtQuantAdd.Text)
+            if (txtProdID.Text  txtQuantAdd.Text)
             {
 
             }

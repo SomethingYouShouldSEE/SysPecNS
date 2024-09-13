@@ -65,8 +65,10 @@ namespace SysPecNSLib
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"update estoques set quantidade = {quant},data_ultimo_movimento = default where {id};";
             cmd.ExecuteNonQuery();
+            
 
-            //cmd.Connection.Close();
+            cmd.Connection.Close();
+
         }
          
 
