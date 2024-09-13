@@ -34,17 +34,25 @@ namespace SysPecNSLib
             
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values ({id},{quant},{data_mov})";
+            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values ({id},{quant},{data_mov});";
             cmd.ExecuteNonQuery();
         }
         public static List<Estoque> ObterList()
         {
             List<Estoque> list = new();
             var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from estoque;";
+            var dr = cmd.ExecuteReader();
+            while(dr.Read())
+            {
+                dr.GetInt32(0);
+                dr.GetDecimal(1);
+                dr.GetDateTime(2);
+            }
 
 
-
-
+            cmd.Connection.Close();
             return list;
         }
 
