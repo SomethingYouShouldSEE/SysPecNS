@@ -34,7 +34,6 @@
             clnID = new DataGridViewTextBoxColumn();
             clnProdID = new DataGridViewTextBoxColumn();
             clnDataMov = new DataGridViewTextBoxColumn();
-            txtQuantAdd = new TextBox();
             label2 = new Label();
             txtProdID = new TextBox();
             label3 = new Label();
@@ -42,8 +41,9 @@
             btnAtualizar = new Button();
             gbAdd = new GroupBox();
             gbUpt = new GroupBox();
-            txtQuantUpt = new TextBox();
             label4 = new Label();
+            mskQuantUpt = new MaskedTextBox();
+            mskQuantAdd = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             gbAdd.SuspendLayout();
             gbUpt.SuspendLayout();
@@ -100,14 +100,6 @@
             clnDataMov.ReadOnly = true;
             clnDataMov.Width = 200;
             // 
-            // txtQuantAdd
-            // 
-            txtQuantAdd.Location = new Point(37, 94);
-            txtQuantAdd.Name = "txtQuantAdd";
-            txtQuantAdd.Size = new Size(100, 23);
-            txtQuantAdd.TabIndex = 3;
-            txtQuantAdd.TextChanged += txtQuant_TextChanged;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -155,8 +147,8 @@
             // 
             // gbAdd
             // 
+            gbAdd.Controls.Add(mskQuantAdd);
             gbAdd.Controls.Add(btnAdicionar);
-            gbAdd.Controls.Add(txtQuantAdd);
             gbAdd.Controls.Add(label2);
             gbAdd.Controls.Add(label3);
             gbAdd.Controls.Add(txtProdID);
@@ -168,8 +160,8 @@
             // 
             // gbUpt
             // 
+            gbUpt.Controls.Add(mskQuantUpt);
             gbUpt.Controls.Add(btnAtualizar);
-            gbUpt.Controls.Add(txtQuantUpt);
             gbUpt.Controls.Add(label4);
             gbUpt.Controls.Add(txtEstoqueId);
             gbUpt.Controls.Add(label1);
@@ -179,14 +171,6 @@
             gbUpt.TabIndex = 9;
             gbUpt.TabStop = false;
             // 
-            // txtQuantUpt
-            // 
-            txtQuantUpt.Location = new Point(40, 94);
-            txtQuantUpt.Name = "txtQuantUpt";
-            txtQuantUpt.Size = new Size(100, 23);
-            txtQuantUpt.TabIndex = 3;
-            txtQuantUpt.TextChanged += txtQuant_TextChanged;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -195,6 +179,22 @@
             label4.Size = new Size(69, 15);
             label4.TabIndex = 4;
             label4.Text = "Quantidade";
+            // 
+            // mskQuantUpt
+            // 
+            mskQuantUpt.Location = new Point(38, 94);
+            mskQuantUpt.Mask = "0,00";
+            mskQuantUpt.Name = "mskQuantUpt";
+            mskQuantUpt.Size = new Size(100, 23);
+            mskQuantUpt.TabIndex = 8;
+            mskQuantUpt.TextAlign = HorizontalAlignment.Center;
+            // 
+            // mskQuantAdd
+            // 
+            mskQuantAdd.Location = new Point(36, 94);
+            mskQuantAdd.Name = "mskQuantAdd";
+            mskQuantAdd.Size = new Size(100, 23);
+            mskQuantAdd.TabIndex = 8;
             // 
             // FrmAtidade
             // 
@@ -221,7 +221,6 @@
         private TextBox txtEstoqueId;
         private Label label1;
         private DataGridView dgvEstoque;
-        private TextBox txtQuantAdd;
         private Label label2;
         private DataGridViewTextBoxColumn clnID;
         private DataGridViewTextBoxColumn clnProdID;
@@ -232,7 +231,8 @@
         private Button btnAtualizar;
         private GroupBox gbAdd;
         private GroupBox gbUpt;
-        private TextBox txtQuantUpt;
         private Label label4;
+        private MaskedTextBox mskQuantAdd;
+        private MaskedTextBox mskQuantUpt;
     }
 }

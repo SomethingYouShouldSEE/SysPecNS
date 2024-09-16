@@ -70,7 +70,7 @@ namespace SysPecNSLib
         /// </summary>
         /// <param name="id">Id do usuario buscado</param>
         /// <returns>Objeto Usuario com todos os campos</returns>
-        public static Usuario ObeterPorId(int id)
+        public static Usuario ObeterPorId(int id) // METODO
         {
             Usuario usuario = new();
             var cmd = Banco.Abrir();

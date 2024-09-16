@@ -73,6 +73,11 @@ namespace SysPecNSLib
 
         }
 
+        public Produto(int id)
+        {
+            Id = id;
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -145,6 +150,21 @@ namespace SysPecNSLib
                     dr.GetDouble(7),
                     null,
                     dr.GetDateTime(9)
+                    );
+            }
+            return produto;
+        }
+
+        public static Produto ObterSóId(int id)
+        {
+            Produto produto = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select id from produtos where id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                produto = new(
+                    dr.GetInt32(0)
                     );
             }
             return produto;

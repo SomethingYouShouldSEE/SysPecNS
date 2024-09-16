@@ -13,6 +13,7 @@ namespace SysPecNSDesk
 {
     public partial class FrmAtidade : Form
     {
+
         public FrmAtidade()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace SysPecNSDesk
             var lista = Estoque.ObterList();
             int cont = 0;
             //var test = Cliente
+            //var testee = Produto.ObterSóId(int.Parse(txtProdID.Text));
+
 
             dgvEstoque.Rows.Clear();
             foreach (var row in lista)
@@ -50,12 +53,39 @@ namespace SysPecNSDesk
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (txtProdID.Text  txtQuantAdd.Text)
+            if (txtProdID.Text == "" || mskQuantAdd.Text == "")
             {
-
+                MessageBox.Show("Para Adionar um Produto Adione \n Um ID Para Verificação e Quantidade Inicial");
             }
             else
             {
+
+                var testee = Produto.ObterSóId(int.Parse(txtProdID.Text));
+               // if(txtProdID.Text == testee)
+                { 
+                    
+                }
+
+                var GetCell = dgvEstoque.Rows[0].Cells[0].Value; // Pega valor do cell selecionado no grid
+
+  
+                var posicaoLinha = dgvEstoque.Rows[0];
+
+                int cont = 0;
+                
+
+
+
+                // Armazenando valor do grid
+                Estoque estoque_add = new(
+                    int.Parse(txtEstoqueId.Text),
+                    decimal.Parse(mskQuantAdd.Text)
+                    );
+               
+
+                estoque_add.Estoque_Insert();
+
+
                 //txtProdID.Clear;
                 //txtQuantAdd.Clear;
                 //Message
@@ -66,6 +96,8 @@ namespace SysPecNSDesk
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
 
+
+            var GetCell = dgvEstoque.CurrentCell.Value; // Pega valor do cell selecionado no grid
         }
 
         private void dgvEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)

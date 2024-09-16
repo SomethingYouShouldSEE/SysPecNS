@@ -15,6 +15,7 @@ namespace SysPecNSLib
         public decimal? Quantidade { get; set; }
         public DateTime? Data_Movimento { get; set; }
         public Pedido? Barra { get; set; }
+        
 
         public Estoque(int id, decimal? quantidade, DateTime? data_Movimento)
         {
@@ -22,22 +23,22 @@ namespace SysPecNSLib
             Quantidade = quantidade;
             Data_Movimento = data_Movimento;
         }
-        public Estoque(decimal? quantidade, DateTime? data_Movimento)
+        public Estoque(int id, decimal? quantidade)
         {
+            Id = id;
             Quantidade = quantidade;
-            Data_Movimento = data_Movimento;
         }
 
 
-        public void Estoque_Insert(decimal quant)
+        public void Estoque_Insert()
         {
             
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values (0,{quant},default);";
+            cmd.CommandText = $"insert into estoques (id,quantidade,data_ultimo_movimento) values (0,{Quantidade},default);";
             cmd.ExecuteNonQuery();
 
-            //cmd.Connection.Close();
+            cmd.Connection.Close();
         }
         public static List<Estoque> ObterList()
         {
@@ -55,7 +56,7 @@ namespace SysPecNSLib
             }
 
 
-            //cmd.Connection.Close();
+            cmd.Connection.Close();
             return list;
         }
 
