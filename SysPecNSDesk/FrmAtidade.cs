@@ -60,25 +60,12 @@ namespace SysPecNSDesk
             else
             {
 
-                var testee = Produto.ObterSóId(int.Parse(txtProdID.Text));
+               // var testee = Produto.ObterSóId(int.Parse(txtProdID.Text));
                // if(txtProdID.Text == testee)
-                { 
-                    
-                }
-
-                var GetCell = dgvEstoque.Rows[0].Cells[0].Value; // Pega valor do cell selecionado no grid
-
-  
-                var posicaoLinha = dgvEstoque.Rows[0];
-
-                int cont = 0;
-                
-
-
-
+              
                 // Armazenando valor do grid
                 Estoque estoque_add = new(
-                    int.Parse(txtEstoqueId.Text),
+                    Produto.ObterPorId(int.Parse(txtProdID.Text)),
                     decimal.Parse(mskQuantAdd.Text)
                     );
                
@@ -98,6 +85,8 @@ namespace SysPecNSDesk
 
 
             var GetCell = dgvEstoque.CurrentCell.Value; // Pega valor do cell selecionado no grid
+            var posicaoLinha = dgvEstoque.Rows[0];
+
         }
 
         private void dgvEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -76,6 +76,7 @@ namespace SysPecNSLib
         public Produto(int id)
         {
             Id = id;
+
         }
 
         public void Inserir()
@@ -155,7 +156,7 @@ namespace SysPecNSLib
             return produto;
         }
 
-        public static Produto ObterSóId(int id)
+        public static Produto ObterSóId(string id)
         {
             Produto produto = new();
             var cmd = Banco.Abrir();
